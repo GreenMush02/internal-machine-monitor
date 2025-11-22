@@ -329,64 +329,78 @@ Data: ________________  |  Czas trwania: ________________
 
 === NOWE PYTANIA - ODPOWIEDZI ===
 
-1. DEEPDIVE W PROBLEM:
-   - Najczęstsze przyczyny awarii: _____________________
-   - Workflow operator → planista: _____________________
-   - Bottlenecki w komunikacji: ________________________
-   - Konsekwencje opóźnionej reakcji: __________________
+1. PROBLEM Z AWARIAMI:
+   - Typowy scenariusz: Maszyna wylatuje z produkcji bez możliwości kontynuacji produkcji
+   - Czas reakcji obecnie: Powinien być natychmiastowy / planiści zajmują się planowaniem produkcji
+   - Kto decyduje: Może planiści
+   - Narzędzia używane: TOMAI ERP (firma jest autorem)
 
-2. CROSS-LINE SCHEDULING (100+ robotów, 4200m²):
+2. PROCES PLANOWANIA:
+   - System: Klienci codziennie sprawdzają czy mają zaplanowane procesy produkcyjne
+   - Częstotliwość zmian: zależy od priorytetów ale zwykle tyg/2tyg / miesięczne wyprzedzenie
+   - Integracja z maszynami: często stare maszyny bez integracji (ELPLC zlicza całkowity użytek, czy pracowała czy nie), komputer z aplikacją obok maszyny dla operatorów
+
+3. TOMAI:
+   - Funkcje: _________________________________________
+   - Czy reaguje automatycznie: ________________________
+   - API/integracja: ___________________________________
+
+4. KOSZT PRZESTOJU:
+   - Koszt/godzina: Zależy od tego co maszyna produkuje, np wariatory do samochodów 1 = 120$ / 6sec (600 szt/h = $72,000/h)
+   - Częstotliwość awarii: _____________________________
+   - % strat produkcji: ________________________________
+
+5. POTRZEBY OPERATORÓW:
+   - Największy problem: powinien wiedzieć jak powinien zareagować podczas awarii, instrukcje w systemie jak reagować, operatorzy chcą dużo informacji w czasie rzeczywistym
+   - Czego brakuje: nie wiedzą "gdzie przejść" po awarii maszyny
+   - Preferowana automatyzacja: operatorzy zepsutych maszyn żeby wiedzieli co mają zrobić i gdzie przejść
+
+6. CROSS-LINE SCHEDULING (100+ robotów, 4200m²):
    - Czy linie są niezależne: __________________________
    - Współdzielenie zasobów: ___________________________
    - Priorytetyzacja projektów: ________________________
    - Robotyzacja vs CNC (różnice): _____________________
 
-3. TOMAI - TECHNICAL DEEPDIVE:
+7. TOMAI - TECHNICAL DEEPDIVE:
    - Czy TOMAI automatycznie reorganizuje: _____________
    - API/webhooks dostępne: ____________________________
    - Real-time event streaming: ________________________
    - Plany rozbudowy TOMAI: ____________________________
    - BMZ Poland case study insights: ___________________
 
-4. ROI CALCULATIONS:
+8. ROI CALCULATIONS:
    - 30 min baseline realistic?: _______________________
    - Liczba awarii/miesiąc: ____________________________
-   - Wariatory: ile można wyprodukować w 30 min: _______
+   - Wariatory: ile można wyprodukować w 30 min: 300 szt (30min ÷ 6sec)
    - Inne high-value produkty: _________________________
    - Kary umowne za opóźnienia: ________________________
 
-5. INSTRUKCJE DLA OPERATORÓW:
-   - Czy są SOPs dla awarii: ___________________________
-   - Co jest najbardziej przydatne: ____________________
-   - Dostęp do harmonogramu całej linii: _______________
-   - Gap w obecnych narzędziach: _______________________
-
-6. INTEGRACJA SYSTEMÓW:
+9. INTEGRACJA SYSTEMÓW:
    - Systemy oprócz TOMAI (SCADA, IoT): ________________
    - Standardy integracji (REST/SOAP/MQ): ______________
    - Security/compliance requirements: _________________
    - Effort estimate dla integracji: ___________________
 
-7. PILOT PROGRAM:
+10. PILOT PROGRAM:
    - Najlepsza linia do pilota: ________________________
    - KPI success dla pilota: ___________________________
    - Timeline typowych pilotów: ________________________
    - Budget expectations: ______________________________
 
-8. DECISION MAKERS & NEXT STEPS:
+11. DECISION MAKERS & NEXT STEPS:
    - Kto powinien być zaangażowany: ____________________
    - Rola zespołu CBR/R&D: _____________________________
    - Budget na R&D projects: ___________________________
    - Kryteria decyzyjne: _______________________________
    - Otwartość na partnership: _________________________
 
-9. INDUSTRY 4.0 & KONKURENCJA:
+12. INDUSTRY 4.0 & KONKURENCJA:
    - Obserwowane rozwiązania na rynku: _________________
    - Trendy w smart factory: ___________________________
    - White space dla FailSafe: _________________________
    - Must-have vs nice-to-have features: _______________
 
-10. FEEDBACK NA DEMO:
+13. FEEDBACK NA DEMO:
    - Reakcja na 3-sekundową reakcję: ___________________
    - UI/UX feedback: ___________________________________
    - Missing features: _________________________________

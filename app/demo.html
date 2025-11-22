@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FailSafe AI - Live Demo | Grupa 5</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<!-- AOS -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="/app/static/css/demo.css">
+</head>
+
+<body>
+	<!-- Navigation -->
+	<nav class="nav-demo">
+		<a href="/app/index.html" class="nav-back">
+			<span class="nav-icon">←</span>
+			<span class="nav-text">Landing Page</span>
+		</a>
+		<div class="nav-logo">
+			<span class="logo-icon">⚡</span>
+			<span class="logo-text">FailSafe<span class="logo-ai">AI</span></span>
+			<span class="logo-subtitle">Live Demo</span>
+		</div>
+		<div class="nav-timer">
+			<span class="timer-label">Czas sesji:</span>
+			<span class="timer-value" id="session-timer">00:00:00.000</span>
+		</div>
+	</nav>
+
+	<!-- Main Container -->
+	<div class="demo-container">
+		<!-- KPI Dashboard -->
+		<section class="kpi-section" data-aos="fade-down">
+			<h2 class="section-title">
+				<span class="title-icon">📊</span>
+				Live Production KPI
+			</h2>
+			<div class="kpi-grid">
+				<div class="kpi-card">
+					<div class="kpi-icon">🏭</div>
+					<div class="kpi-content">
+						<div class="kpi-label">Maszyny Aktywne</div>
+						<div class="kpi-value" id="kpi-machines">8/8</div>
+					</div>
+					<div class="kpi-status status-ok"></div>
+				</div>
+
+				<div class="kpi-card">
+					<div class="kpi-icon">⚡</div>
+					<div class="kpi-content">
+						<div class="kpi-label">Części/Godzinę</div>
+						<div class="kpi-value" id="kpi-parts">1,802</div>
+					</div>
+					<div class="kpi-status status-ok"></div>
+				</div>
+
+				<div class="kpi-card">
+					<div class="kpi-icon">⏱️</div>
+					<div class="kpi-content">
+						<div class="kpi-label">Cykl Średni</div>
+						<div class="kpi-value" id="kpi-cycle">6.2s</div>
+					</div>
+					<div class="kpi-status status-ok"></div>
+				</div>
+
+				<div class="kpi-card">
+					<div class="kpi-icon">📈</div>
+					<div class="kpi-content">
+						<div class="kpi-label">OEE</div>
+						<div class="kpi-value" id="kpi-oee">94.2%</div>
+					</div>
+					<div class="kpi-status status-ok"></div>
+				</div>
+
+				<div class="kpi-card">
+					<div class="kpi-icon">💰</div>
+					<div class="kpi-content">
+						<div class="kpi-label">Koszt Przestoju</div>
+						<div class="kpi-value">$72k/h</div>
+					</div>
+					<div class="kpi-status status-warning"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Control Panel -->
+		<section class="control-section" data-aos="fade-up" data-aos-delay="200">
+			<div class="control-panel">
+				<div class="panel-header">
+					<h3 class="panel-title">Symulator Awarii</h3>
+					<p class="panel-subtitle">Kliknij przycisk aby uruchomić AI Scheduler</p>
+				</div>
+				<button class="btn-failure" id="btn-failure" onclick="triggerFailure()">
+					<span class="btn-icon">⚠️</span>
+					<span class="btn-text">SYMULUJ AWARIĘ MASZYNY</span>
+					<span class="btn-pulse"></span>
+				</button>
+				<div class="panel-info">
+					<div class="info-item">
+						<span class="info-label">Algorytm:</span>
+						<span class="info-value">Genetic Algorithm</span>
+					</div>
+					<div class="info-item">
+						<span class="info-label">Populacja:</span>
+						<span class="info-value">100 osobników</span>
+					</div>
+					<div class="info-item">
+						<span class="info-label">Generacje:</span>
+						<span class="info-value">50 iteracji</span>
+					</div>
+					<div class="info-item">
+						<span class="info-label">Warianty:</span>
+						<span class="info-value">500+ testowanych</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Machines Grid -->
+		<section class="machines-section" data-aos="fade-up" data-aos-delay="400">
+			<h2 class="section-title">
+				<span class="title-icon">🏭</span>
+				Linia Produkcyjna - 8 Maszyn CNC
+			</h2>
+			<div class="machines-grid" id="machines-grid"></div>
+		</section>
+
+		<!-- Timeline -->
+		<section class="timeline-section" id="timeline-section">
+			<h2 class="section-title">
+				<span class="title-icon">⏱️</span>
+				Algorytm Optymalizacji - Krok po Kroku
+			</h2>
+			<div class="timeline" id="timeline"></div>
+		</section>
+	</div>
+
+	<!-- Loading Overlay -->
+	<div class="loading-overlay" id="loading-overlay">
+		<div class="loading-content">
+			<div class="loading-spinner"></div>
+			<div class="loading-text">Inicjalizacja AI Scheduler...</div>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="/app/static/js/demo.js"></script>
+</body>
+
+</html>

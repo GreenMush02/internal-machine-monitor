@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FailSafe AI - Production Optimizer | Grupa 5</title>
+
+	<!-- Google Fonts - Futurystyczne -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<!-- AOS - Animate On Scroll -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+	<!-- Particles.js for background -->
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+	<link rel="stylesheet" href="/app/static/css/landing.css">
+</head>
+
+<body>
+	<!-- Particles Background -->
+	<div id="particles-js"></div>
+
+	<!-- Floating Navigation -->
+	<nav class="nav-floating" data-aos="fade-down">
+		<div class="nav-logo">
+			<span class="logo-icon">⚡</span>
+			<span class="logo-text">FailSafe<span class="logo-ai">AI</span></span>
+		</div>
+		<div class="nav-links">
+			<a href="#problem" class="nav-link">Problem</a>
+			<a href="#solution" class="nav-link">Rozwiązanie</a>
+			<a href="#tech" class="nav-link">Tech Stack</a>
+			<a href="#team" class="nav-link">Zespół</a>
+			<a href="#contact" class="nav-link nav-link-cta">Kontakt</a>
+		</div>
+		<a href="/app/demo.html" class="btn-demo-nav">
+			<span class="btn-icon">🚀</span>
+			Live Demo
+		</a>
+	</nav>
+
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="hero-overlay"></div>
+		<div class="hero-content">
+			<div class="badge-group" data-aos="zoom-in" data-aos-delay="100">
+				<span class="badge badge-primary">🏆 Grupa 5</span>
+				<span class="badge badge-secondary">Hackathon dla Małopolski 2025</span>
+			</div>
+
+			<h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">
+				<span class="title-line">FailSafe<span class="gradient-text">AI</span></span>
+				<span class="title-line">Eliminujemy <span class="gradient-text-alt">Chaos</span></span>
+				<span class="title-line">w Produkcji</span>
+			</h1>
+
+			<p class="hero-subtitle" data-aos="fade-up" data-aos-delay="500">
+				Algorytm genetyczny reagujący w <span class="highlight">3 sekundy</span> na awarie maszyn.<br>
+				<span class="highlight">93% redukcja</span> kosztów przestoju. <span class="highlight">$4M</span>
+				oszczędności rocznie.
+			</p>
+
+			<div class="cta-group" data-aos="fade-up" data-aos-delay="700">
+				<a href="/app/demo.html" class="btn btn-primary btn-glow">
+					<span class="btn-icon">🚀</span>
+					<span class="btn-text">Uruchom Demo</span>
+					<span class="btn-shine"></span>
+				</a>
+				<a href="#contact" class="btn btn-outline">
+					<span class="btn-icon">📧</span>
+					<span class="btn-text">Skontaktuj się</span>
+				</a>
+			</div>
+
+			<!-- Scroll Indicator -->
+			<div class="scroll-indicator" data-aos="fade-up" data-aos-delay="1000">
+				<div class="scroll-mouse">
+					<div class="scroll-wheel"></div>
+				</div>
+				<span class="scroll-text">Przewiń w dół</span>
+			</div>
+		</div>
+
+		<!-- Animated Stats Bar -->
+		<div class="stats-floating" data-aos="fade-up" data-aos-delay="1200">
+			<div class="stat-card">
+				<div class="stat-icon">⚡</div>
+				<div class="stat-content">
+					<div class="stat-number" data-count="3">0</div>
+					<div class="stat-unit">sekundy</div>
+					<div class="stat-label">Czas reakcji</div>
+				</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon">💰</div>
+				<div class="stat-content">
+					<div class="stat-number" data-count="93">0</div>
+					<div class="stat-unit">%</div>
+					<div class="stat-label">Redukcja kosztów</div>
+				</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon">📈</div>
+				<div class="stat-content">
+					<div class="stat-number" data-count="4">0</div>
+					<div class="stat-unit">M $</div>
+					<div class="stat-label">Oszczędności/rok</div>
+				</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon">🤖</div>
+				<div class="stat-content">
+					<div class="stat-number" data-count="500">0</div>
+					<div class="stat-unit">+</div>
+					<div class="stat-label">Wariantów AI</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Problem Section -->
+	<section class="section section-problem" id="problem">
+		<div class="container">
+			<div class="section-header" data-aos="fade-up">
+				<span class="section-badge">🚨 Problem</span>
+				<h2 class="section-title">
+					Chaos w <span class="gradient-text">Produkcji</span>
+				</h2>
+				<p class="section-subtitle">
+					Co się dzieje gdy maszyna CNC przestaje działać?
+				</p>
+			</div>
+
+			<div class="problem-grid">
+				<div class="problem-card" data-aos="fade-right" data-aos-delay="100">
+					<div class="problem-icon-wrapper">
+						<div class="problem-icon">⏰</div>
+						<div class="problem-pulse"></div>
+					</div>
+					<h3 class="problem-title">30-60 minut przestoju</h3>
+					<p class="problem-description">
+						Planista ręcznie przelicza harmonogram w Excel. Dzwoni do operatorów.
+						Sprawdza kompatybilność. Weryfikuje deadline'y.
+					</p>
+					<div class="problem-cost">
+						<span class="cost-label">Strata:</span>
+						<span class="cost-value">$36k - $72k</span>
+					</div>
+				</div>
+
+				<div class="problem-card" data-aos="fade-right" data-aos-delay="200">
+					<div class="problem-icon-wrapper">
+						<div class="problem-icon">😰</div>
+						<div class="problem-pulse"></div>
+					</div>
+					<h3 class="problem-title">Błędy ludzkie</h3>
+					<p class="problem-description">
+						Pomylone priorytety. Niezauważone konflikty. Zapomniany operator nocnej zmiany.
+						Stres i presja czasu.
+					</p>
+					<div class="problem-cost">
+						<span class="cost-label">Ryzyko:</span>
+						<span class="cost-value">Dodatkowe opóźnienia</span>
+					</div>
+				</div>
+
+				<div class="problem-card" data-aos="fade-right" data-aos-delay="300">
+					<div class="problem-icon-wrapper">
+						<div class="problem-icon">📞</div>
+						<div class="problem-pulse"></div>
+					</div>
+					<h3 class="problem-title">Chaos komunikacyjny</h3>
+					<p class="problem-description">
+						Telefony do 5 działów. E-maile do managera. SMS do operatora.
+						Raport ręcznie pisany. Brak śledzenia.
+					</p>
+					<div class="problem-cost">
+						<span class="cost-label">Efekt:</span>
+						<span class="cost-value">Zero odpowiedzialności</span>
+					</div>
+				</div>
+
+				<div class="problem-card" data-aos="fade-right" data-aos-delay="400">
+					<div class="problem-icon-wrapper">
+						<div class="problem-icon">💸</div>
+						<div class="problem-pulse"></div>
+					</div>
+					<h3 class="problem-title">Koszt przestoju ELPLC</h3>
+					<p class="problem-description">
+						4200m² hal, 9 CNC. Każda minuta bez produkcji = stracony zysk,
+						niespełnione zamówienia, niezadowoleni klienci.
+					</p>
+					<div class="problem-cost">
+						<span class="cost-label">Koszt:</span>
+						<span class="cost-value">$72k/godzina</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Solution Section -->
+	<section class="section section-solution" id="solution">
+		<div class="container">
+			<div class="section-header" data-aos="fade-up">
+				<span class="section-badge">✅ Rozwiązanie</span>
+				<h2 class="section-title">
+					FailSafe AI <span class="gradient-text">Scheduler</span>
+				</h2>
+				<p class="section-subtitle">
+					Algorytm genetyczny reorganizujący produkcję w 3 sekundy
+				</p>
+			</div>
+
+			<div class="solution-timeline">
+				<div class="timeline-step" data-aos="fade-left" data-aos-delay="100">
+					<div class="step-number">01</div>
+					<div class="step-content">
+						<div class="step-icon">🚨</div>
+						<h3 class="step-title">Detekcja Awarii</h3>
+						<p class="step-description">
+							Czujniki wykrywają problem z CNC-04. System automatycznie identyfikuje
+							zablokowane zadania, priorytety i wartość finansową.
+						</p>
+						<div class="step-metric">
+							<span class="metric-value">0.5s</span>
+							<span class="metric-label">Czas detekcji</span>
+						</div>
+					</div>
+					<div class="step-connector"></div>
+				</div>
+
+				<div class="timeline-step" data-aos="fade-right" data-aos-delay="200">
+					<div class="step-number">02</div>
+					<div class="step-content">
+						<div class="step-icon">🤖</div>
+						<h3 class="step-title">Algorytm Genetyczny</h3>
+						<p class="step-description">
+							AI testuje 500+ wariantów przeniesienia zadań. Uwzględnia kompatybilność,
+							priorytety, deadline'y i koszty. Znajduje optymalne rozwiązanie.
+						</p>
+						<div class="step-metric">
+							<span class="metric-value">3s</span>
+							<span class="metric-label">Optymalizacja</span>
+						</div>
+					</div>
+					<div class="step-connector"></div>
+				</div>
+
+				<div class="timeline-step" data-aos="fade-left" data-aos-delay="300">
+					<div class="step-number">03</div>
+					<div class="step-content">
+						<div class="step-icon">🔄</div>
+						<h3 class="step-title">Automatyczna Reorganizacja</h3>
+						<p class="step-description">
+							Zadania przypisane do wolnych maszyn. Zachowane priorytety.
+							Operatorzy powiadomieni. Raport do managera wysłany.
+						</p>
+						<div class="step-metric">
+							<span class="metric-value">0min</span>
+							<span class="metric-label">Interwencja człowieka</span>
+						</div>
+					</div>
+					<div class="step-connector"></div>
+				</div>
+
+				<div class="timeline-step" data-aos="fade-right" data-aos-delay="400">
+					<div class="step-number">04</div>
+					<div class="step-content">
+						<div class="step-icon">💰</div>
+						<h3 class="step-title">Masywne Oszczędności</h3>
+						<p class="step-description">
+							30-60 min → 3s. Koszt: $2,400 zamiast $36,000.
+							Jedna awaria = $33,600 oszczędzone. 10 awarii/miesiąc = $4M/rok.
+						</p>
+						<div class="step-metric savings">
+							<span class="metric-value">93%</span>
+							<span class="metric-label">Redukcja kosztów</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tech Stack -->
+	<section class="section section-tech" id="tech">
+		<div class="container">
+			<div class="section-header" data-aos="fade-up">
+				<span class="section-badge">⚙️ Technologia</span>
+				<h2 class="section-title">
+					Sprawdzone rozwiązania <span class="gradient-text">Industry 4.0</span>
+				</h2>
+			</div>
+
+			<div class="tech-grid">
+				<div class="tech-card" data-aos="zoom-in" data-aos-delay="100">
+					<div class="tech-icon">🐍</div>
+					<h3 class="tech-name">Python 3.13</h3>
+					<p class="tech-description">Backend z algorytmem genetycznym</p>
+					<div class="tech-badge">Core</div>
+				</div>
+
+				<div class="tech-card" data-aos="zoom-in" data-aos-delay="150">
+					<div class="tech-icon">⚡</div>
+					<h3 class="tech-name">FastAPI</h3>
+					<p class="tech-description">REST API z auto-dokumentacją</p>
+					<div class="tech-badge">API</div>
+				</div>
+
+				<div class="tech-card" data-aos="zoom-in" data-aos-delay="200">
+					<div class="tech-icon">🧬</div>
+					<h3 class="tech-name">Genetic Algorithm</h3>
+					<p class="tech-description">100 osobników, 50 generacji</p>
+					<div class="tech-badge">AI</div>
+				</div>
+
+				<div class="tech-card" data-aos="zoom-in" data-aos-delay="250">
+					<div class="tech-icon">📊</div>
+					<h3 class="tech-name">Real-time Dashboard</h3>
+					<p class="tech-description">Live monitoring KPI</p>
+					<div class="tech-badge">UI</div>
+				</div>
+
+				<div class="tech-card" data-aos="zoom-in" data-aos-delay="300">
+					<div class="tech-icon">🔐</div>
+					<h3 class="tech-name">Localhost Security</h3>
+					<p class="tech-description">127.0.0.1 only</p>
+					<div class="tech-badge">Security</div>
+				</div>
+
+				<div class="tech-card" data-aos="zoom-in" data-aos-delay="350">
+					<div class="tech-icon">🏭</div>
+					<h3 class="tech-name">Industry 4.0</h3>
+					<p class="tech-description">TOMAI compatible</p>
+					<div class="tech-badge">Integration</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ROI Calculator -->
+	<section class="section section-roi">
+		<div class="container">
+			<div class="section-header" data-aos="fade-up">
+				<span class="section-badge">🧮 Kalkulator</span>
+				<h2 class="section-title">
+					Oblicz swoje <span class="gradient-text">Oszczędności</span>
+				</h2>
+			</div>
+
+			<div class="roi-calculator" data-aos="fade-up" data-aos-delay="200">
+				<div class="roi-inputs">
+					<div class="input-group">
+						<label class="input-label">Liczba maszyn CNC</label>
+						<input type="number" id="machines" class="input-field" value="8" min="1" max="100">
+					</div>
+					<div class="input-group">
+						<label class="input-label">Awarie miesięcznie</label>
+						<input type="number" id="failures" class="input-field" value="10" min="1" max="100">
+					</div>
+					<div class="input-group">
+						<label class="input-label">Koszt przestoju ($/h)</label>
+						<input type="number" id="cost" class="input-field" value="72000" min="1000">
+					</div>
+				</div>
+
+				<button class="btn btn-primary btn-calculate" onclick="calculateROI()">
+					<span class="btn-icon">🧮</span>
+					<span class="btn-text">Oblicz oszczędności</span>
+					<span class="btn-shine"></span>
+				</button>
+
+				<div class="roi-result" id="roi-result">
+					<div class="result-main">
+						<div class="result-label">Roczne oszczędności:</div>
+						<div class="result-value" id="roi-value">$0</div>
+					</div>
+					<div class="result-breakdown" id="roi-breakdown"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Team Section -->
+	<section class="section section-team" id="team">
+		<div class="container">
+			<div class="section-header" data-aos="fade-up">
+				<span class="section-badge">👥 Grupa 5</span>
+				<h2 class="section-title">
+					Nasz <span class="gradient-text">Zespół</span>
+				</h2>
+				<p class="section-subtitle">Poznaj twórców FailSafe AI</p>
+			</div>
+
+			<div class="team-grid">
+				<div class="team-card" data-aos="flip-left" data-aos-delay="100">
+					<div class="team-image-wrapper">
+						<img src="/image/566515643_817744904459766_2257008912551512909_n.jpg" alt="Członek zespołu"
+							class="team-image">
+						<div class="team-overlay">
+							<img src="/image/566515643_817744904459766_2257008912551512909_n.jpg" alt="QR Code"
+								class="team-qr">
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card" data-aos="flip-left" data-aos-delay="150">
+					<div class="team-image-wrapper">
+						<img src="/image/582668872_1762889247703992_6930978373660329921_n.jpg" alt="Członek zespołu"
+							class="team-image">
+						<div class="team-overlay">
+							<img src="/image/582668872_1762889247703992_6930978373660329921_n.jpg" alt="QR Code"
+								class="team-qr">
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card" data-aos="flip-left" data-aos-delay="200">
+					<div class="team-image-wrapper">
+						<img src="/image/582706326_1560963088391669_1736509180567921371_n.jpg" alt="Członek zespołu"
+							class="team-image">
+						<div class="team-overlay">
+							<img src="/image/582706326_1560963088391669_1736509180567921371_n.jpg" alt="QR Code"
+								class="team-qr">
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card" data-aos="flip-left" data-aos-delay="250">
+					<div class="team-image-wrapper">
+						<img src="/image/583134104_1590564038978593_6057847812674814760_n.jpg" alt="Członek zespołu"
+							class="team-image">
+						<div class="team-overlay">
+							<img src="/image/583134104_1590564038978593_6057847812674814760_n.jpg" alt="QR Code"
+								class="team-qr">
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card" data-aos="flip-left" data-aos-delay="300">
+					<div class="team-image-wrapper">
+						<img src="/image/583736527_1171711168262411_7597140228375737247_n.jpg" alt="Członek zespołu"
+							class="team-image">
+						<div class="team-overlay">
+							<img src="/image/583736527_1171711168262411_7597140228375737247_n.jpg" alt="QR Code"
+								class="team-qr">
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card" data-aos="flip-left" data-aos-delay="350">
+					<div class="team-image-wrapper">
+						<img src="/image/583884406_834197982657429_1674551657563673654_n.jpg" alt="Członek zespołu"
+							class="team-image">
+						<div class="team-overlay">
+							<img src="/image/583884406_834197982657429_1674551657563673654_n.jpg" alt="QR Code"
+								class="team-qr">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section class="section section-contact" id="contact">
+		<div class="container">
+			<div class="section-header" data-aos="fade-up">
+				<span class="section-badge">📧 Kontakt</span>
+				<h2 class="section-title">
+					Zainteresowany? <span class="gradient-text">Napisz do nas</span>
+				</h2>
+				<p class="section-subtitle">Odpowiemy w ciągu 24 godzin</p>
+			</div>
+
+			<form class="contact-form" id="contact-form" data-aos="fade-up" data-aos-delay="200">
+				<div class="form-row">
+					<div class="form-group">
+						<label class="form-label">Imię i Nazwisko *</label>
+						<input type="text" name="name" class="form-input" required>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Email *</label>
+						<input type="email" name="email" class="form-input" required>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group">
+						<label class="form-label">Firma</label>
+						<input type="text" name="company" class="form-input">
+					</div>
+					<div class="form-group">
+						<label class="form-label">Telefon</label>
+						<input type="tel" name="phone" class="form-input">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Wiadomość *</label>
+					<textarea name="message" class="form-textarea" rows="6" required></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-submit">
+					<span class="btn-icon">📨</span>
+					<span class="btn-text">Wyślij wiadomość</span>
+					<span class="btn-shine"></span>
+				</button>
+
+				<div class="form-message" id="form-message"></div>
+			</form>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-content">
+				<div class="footer-brand">
+					<div class="footer-logo">
+						<span class="logo-icon">⚡</span>
+						<span class="logo-text">FailSafe<span class="logo-ai">AI</span></span>
+					</div>
+					<p class="footer-tagline">Eliminujemy chaos w produkcji. Jedna awaria na raz.</p>
+				</div>
+
+				<div class="footer-links">
+					<div class="footer-column">
+						<h4 class="footer-title">Aplikacja</h4>
+						<a href="/app/demo.html" class="footer-link">Live Demo</a>
+						<a href="/app/dashboard.html" class="footer-link">Dashboard</a>
+						<a href="#roi" class="footer-link">Kalkulator ROI</a>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-title">Informacje</h4>
+						<a href="#problem" class="footer-link">Problem</a>
+						<a href="#solution" class="footer-link">Rozwiązanie</a>
+						<a href="#tech" class="footer-link">Technologia</a>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-title">Kontakt</h4>
+						<a href="#team" class="footer-link">Zespół</a>
+						<a href="#contact" class="footer-link">Formularz</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<p class="footer-copyright">
+					© 2025 FailSafe AI - Grupa 5 | Hackathon dla Małopolski 2025<br>
+					Projekt dla ELPLC S.A. | Python + FastAPI + Genetic Algorithm
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="/app/static/js/landing.js"></script>
+</body>
+
+</html>

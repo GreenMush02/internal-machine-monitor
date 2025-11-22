@@ -1,0 +1,19 @@
+{
+	"name": "failsafe-ai-landing",
+	"version": "1.0.0",
+	"description": "FailSafe AI - Production Optimizer Landing Page",
+	"author": "Grupa 5 - Hackathon dla Małopolski 2025",
+	"license": "MIT",
+	"scripts": {
+		"dev": "python -m http.server 8000",
+		"start": "python -m http.server 8000"
+	},
+	"keywords": [
+		"failsafe",
+		"production",
+		"optimization",
+		"ai",
+		"scheduling",
+		"manufacturing"
+	]
+}

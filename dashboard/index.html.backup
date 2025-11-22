@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFlow - Predictive Machine Monitoring</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        'dark-bg': '#0f172a',
+                        'dark-card': '#1e293b',
+                        'dark-hover': '#334155'
+                    },
+                    animation: {
+                        'pulse-warning': 'pulse-warning 2s infinite',
+                        'pulse-critical': 'pulse-critical 1s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes pulse-warning {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+        }
+        @keyframes pulse-critical {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100">
+
+    <!-- Header -->
+    <header class="bg-dark-card border-b-2 border-primary shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-industry text-3xl text-primary"></i>
+                    <h1 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                        SmartFlow
+                    </h1>
+                </div>
+                <div class="flex items-center gap-4 md:gap-6">
+                    <span class="text-lg text-slate-400 font-medium" id="currentTime"></span>
+
+                    <!-- User & Role Switcher -->
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center gap-2 px-4 py-2 bg-dark-hover rounded-full hover:bg-slate-600 transition-all">
+                            <i class="fas fa-user-circle text-2xl text-primary"></i>
+                            <div class="hidden sm:block text-left">
+                                <div class="text-sm font-semibold" id="userName">Jan Kowalski</div>
+                                <div class="text-xs" id="userRole">Operator</div>
+                            </div>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-56 bg-dark-card rounded-lg shadow-xl border border-slate-700 z-50">
+                            <div class="p-3 border-b border-slate-700">
+                                <div class="text-sm font-semibold">Zmień rolę (demo)</div>
+                            </div>
+                            <div class="p-2">
+                                <button onclick="switchRole('operator')" class="w-full text-left px-3 py-2 rounded hover:bg-dark-hover transition-all flex items-center gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                                    <div>
+                                        <div class="font-semibold">Operator</div>
+                                        <div class="text-xs text-slate-400">Podstawowy monitoring</div>
+                                    </div>
+                                </button>
+                                <button onclick="switchRole('manager')" class="w-full text-left px-3 py-2 rounded hover:bg-dark-hover transition-all flex items-center gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                    <div>
+                                        <div class="font-semibold">Kierownik</div>
+                                        <div class="text-xs text-slate-400">+ Analityka i predykcje</div>
+                                    </div>
+                                </button>
+                                <button onclick="switchRole('owner')" class="w-full text-left px-3 py-2 rounded hover:bg-dark-hover transition-all flex items-center gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-purple-500"></div>
+                                    <div>
+                                        <div class="font-semibold">Właściciel</div>
+                                        <div class="text-xs text-slate-400">+ Zarządzanie i finanse</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="flex gap-2 mt-4 overflow-x-auto pb-2" id="mainNavigation">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="py-6 md:py-8">
+        <div class="container mx-auto px-4">
+
+            <!-- Alert Banner -->
+            <div id="alertBanner" class="hidden bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-4 mb-6 flex items-center gap-4 shadow-lg animate-pulse">
+                <i class="fas fa-exclamation-triangle text-2xl"></i>
+                <span id="alertMessage" class="flex-1 font-medium"></span>
+                <button onclick="closeAlert()" class="text-white hover:opacity-70 transition-opacity">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- KPIs Section -->
+            <section class="mb-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+
+                    <!-- KPI: Operational Machines -->
+                    <div class="bg-dark-card rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-700">
+                        <div class="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center text-green-500 text-2xl">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs uppercase text-slate-400 tracking-wider">Operacyjne</h3>
+                            <div class="text-3xl font-bold text-white mt-1" id="operationalCount">8 / 12</div>
+                            <div class="text-xs text-slate-400">Maszyny</div>
+                        </div>
+                    </div>
+
+                    <!-- KPI: Failure Risk -->
+                    <div class="bg-dark-card rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-700">
+                        <div class="w-14 h-14 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-500 text-2xl">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs uppercase text-slate-400 tracking-wider">Ryzyko awarii</h3>
+                            <div class="text-3xl font-bold text-white mt-1" id="riskCount">3</div>
+                            <div class="text-xs text-slate-400">Wysoki priorytet</div>
+                        </div>
+                    </div>
+
+                    <!-- KPI: Active Failures -->
+                    <div class="bg-dark-card rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-700">
+                        <div class="w-14 h-14 rounded-xl bg-red-500/20 flex items-center justify-center text-red-500 text-2xl">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs uppercase text-slate-400 tracking-wider">Awarie</h3>
+                            <div class="text-3xl font-bold text-white mt-1" id="failureCount">1</div>
+                            <div class="text-xs text-slate-400">Aktywne</div>
+                        </div>
+                    </div>
+
+                    <!-- KPI: Efficiency -->
+                    <div class="bg-dark-card rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-slate-700">
+                        <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-500 text-2xl">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs uppercase text-slate-400 tracking-wider">Efektywność</h3>
+                            <div class="text-3xl font-bold text-white mt-1">87%</div>
+                            <div class="text-xs text-slate-400">OEE</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="mb-8">
+                <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-filter text-primary"></i>
+                        Filtry i Analiza
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Time Range Filter -->
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Przedział czasowy</label>
+                            <select id="timeRangeFilter" class="w-full bg-dark-hover border border-slate-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary">
+                                <option value="7">Ostatnie 7 dni</option>
+                                <option value="30" selected>Ostatnie 30 dni</option>
+                                <option value="90">Ostatnie 90 dni</option>
+                                <option value="180">Ostatnie 6 miesięcy</option>
+                            </select>
+                        </div>
+
+                        <!-- Machine Type Filter -->
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Typ maszyny</label>
+                            <select id="machineTypeFilter" class="w-full bg-dark-hover border border-slate-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary">
+                                <option value="all">Wszystkie typy</option>
+                                <option value="CNC Milling">CNC Milling</option>
+                                <option value="CNC Lathe">CNC Lathe</option>
+                                <option value="Hydraulic Press">Prasy</option>
+                                <option value="Robotic Welder">Spawarki</option>
+                                <option value="Other">Inne</option>
+                            </select>
+                        </div>
+
+                        <!-- Status Filter -->
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Status</label>
+                            <select id="statusFilter" class="w-full bg-dark-hover border border-slate-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary">
+                                <option value="all">Wszystkie statusy</option>
+                                <option value="operational">Operacyjne</option>
+                                <option value="warning">Ostrzeżenie</option>
+                                <option value="critical">Krytyczne</option>
+                                <option value="offline">Offline</option>
+                            </select>
+                        </div>
+
+                        <!-- View Mode -->
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Widok</label>
+                            <select id="viewMode" class="w-full bg-dark-hover border border-slate-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary">
+                                <option value="operator">Operator</option>
+                                <option value="manager">Kierownik</option>
+                                <option value="executive">Zarząd</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Executive Dashboard (hidden by default) -->
+            <section id="executiveDashboard" class="mb-8 hidden">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fas fa-chart-pie text-primary"></i>
+                    Dashboard Zarządu
+                </h2>
+
+                <!-- Management KPIs -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg border border-slate-700">
+                        <div class="text-xs uppercase text-slate-400 tracking-wider mb-2">Całkowite straty</div>
+                        <div class="text-3xl font-bold text-red-500" id="totalLosses">0 zł</div>
+                        <div class="text-xs text-slate-400 mt-1">Z tytułu awarii</div>
+                    </div>
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg border border-slate-700">
+                        <div class="text-xs uppercase text-slate-400 tracking-wider mb-2">Średni MTBF</div>
+                        <div class="text-3xl font-bold text-blue-500" id="avgMTBF">0 h</div>
+                        <div class="text-xs text-slate-400 mt-1">Czas między awariami</div>
+                    </div>
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg border border-slate-700">
+                        <div class="text-xs uppercase text-slate-400 tracking-wider mb-2">Średni MTTR</div>
+                        <div class="text-3xl font-bold text-yellow-500" id="avgMTTR">0 min</div>
+                        <div class="text-xs text-slate-400 mt-1">Czas naprawy</div>
+                    </div>
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg border border-slate-700">
+                        <div class="text-xs uppercase text-slate-400 tracking-wider mb-2">Koszt wymian</div>
+                        <div class="text-3xl font-bold text-purple-500" id="replacementCost">0 zł</div>
+                        <div class="text-xs text-slate-400 mt-1">Zalecane inwestycje</div>
+                    </div>
+                </div>
+
+                <!-- Replacement Recommendations -->
+                <div class="bg-dark-card rounded-xl p-6 shadow-lg mb-6">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-exchange-alt text-primary"></i>
+                        Rekomendacje Wymian Maszyn
+                    </h3>
+                    <div id="replacementList" class="space-y-3">
+                        <!-- Will be generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Process Analysis -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                            <i class="fas fa-exclamation-triangle text-primary"></i>
+                            Najbardziej Problematyczne Procesy
+                        </h3>
+                        <div id="problematicProcesses" class="space-y-3">
+                            <!-- Will be generated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                            <i class="fas fa-link text-primary"></i>
+                            Korelacja Typ Maszyny - Typ Awarii
+                        </h3>
+                        <canvas id="correlationChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Machines Grid -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fas fa-cogs text-primary"></i>
+                    Status Maszyn
+                </h2>
+                <div id="machinesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Machines will be dynamically generated -->
+                </div>
+            </section>
+
+            <!-- Predictions Section -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fas fa-brain text-primary"></i>
+                    Predykcja Awarii (AI)
+                </h2>
+                <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                    <div id="predictionList" class="space-y-4">
+                        <!-- Predictions will be dynamically generated -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Failures Chart -->
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                        <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                            <i class="fas fa-chart-bar text-primary"></i>
+                            Awarie (7 dni)
+                        </h3>
+                        <canvas id="failuresChart"></canvas>
+                    </div>
+
+                    <!-- Utilization Chart -->
+                    <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                        <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                            <i class="fas fa-chart-line text-primary"></i>
+                            Wykorzystanie Maszyn
+                        </h3>
+                        <canvas id="utilizationChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Machine Detail Modal -->
+    <div id="machineModal" class="hidden fixed inset-0 bg-black/80 z-[1000] flex items-center justify-center p-4 animate-fadeIn">
+        <div class="bg-dark-card rounded-xl w-full max-w-2xl max-h-[80vh] overflow-y-auto shadow-2xl animate-slideUp">
+            <div class="p-6 border-b border-slate-700 flex justify-between items-center sticky top-0 bg-dark-card z-10">
+                <h2 id="modalTitle" class="text-2xl font-bold"></h2>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white transition-colors text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="p-6">
+                <!-- Content will be dynamically generated -->
+            </div>
+            <div class="p-6 border-t border-slate-700 flex gap-3 justify-end">
+                <button onclick="closeModal()" class="px-6 py-3 bg-dark-hover hover:bg-slate-600 rounded-lg font-semibold transition-all hover:-translate-y-0.5">
+                    Zamknij
+                </button>
+                <button onclick="reportFailure()" class="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-all hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Zgłoś awarię
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/analytics-data.js"></script>
+    <script src="js/ml-predictor.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

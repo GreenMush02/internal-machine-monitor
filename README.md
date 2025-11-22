@@ -29,61 +29,87 @@
 
 ## 🚀 Executive Summary
 
-**SmartFlow** to prosty system do szybkiego zgłaszania awarii i monitorowania maszyn w czasie rzeczywistym.
+**SmartFlow** to system do automatycznej rekonfiguracji produkcji w odpowiedzi na awarie i zakłócenia.
 
-**Co robi:**
-- Operator widzi kolorowe kafelki maszyn - ZIELONY = działa, CZERWONY = awaria, ŻÓŁTY = naprawa
-- Awaria? Jeden klik czerwonego przycisku
-- Technik dostaje zgłoszenie na telefon/tablet, klika "Rozpocznij" → "Zakończ"
-- Wszystko w przeglądarce, działa na telefonie i komputerze
+**Problem (prawdziwy scenariusz ELPLC):**
+> *"Fabryka produkuje części samochodowe. Wszystko idzie zgodnie z planem. Nagle kluczowa maszyna się psuje. Cały harmonogram się rozsypuje. Zlecenia się opóźniają, klienci czekają, koszty rosną."*
 
-**Dla jury:** Gotowe MVP w 48h, intuicyjny interfejs bez szkoleń, natychmiastowy ROI przez skrócenie czasu reakcji na awarie.
+**Nasze rozwiązanie (zgodne z wyzwaniem):**
+- System **nie panikuje**, tylko **automatycznie reaguje** w czasie rzeczywistym
+- **Wizualizacja #1: Mapa zasobów** - Dashboard kafelkowy: 🟢 = działa, 🔴 = awaria, 🟡 = naprawa
+- **Wizualizacja #2: Wykres Gantta** (roadmap Day 2) - Timeline zleceń pokazujący wpływ awarii na harmonogram
+- Przy awarii: system oznacza maszynę jako niedostępną i **automatycznie przelicza** dostępność
+- Operator/Kierownik widzi od razu: które zlecenia są zagrożone, która maszyna może przejąć zadanie
+- Technik dostaje zgłoszenie → "Rozpocznij" → "Zakończ" → maszyna wraca do puli produkcyjnej
+
+**Dla jury:** 
+- ✅ **"Pokazane w praktyce"**: Działające MVP z mapą zasobów (każdy operator wie co robić)
+- ✅ **Industry 4.0**: System reagujący w czasie rzeczywistym
+- ✅ **Roadmap gotowa**: Wykres Gantta (Day 2), AI/algorytmy genetyczne (Q1 2026)
+- ✅ **Made in Małopolska**: Projekt młodych inżynierów z regionu 🇵🇱
 
 ---
 
 ## 🎯 Dlaczego wygramy wyzwanie ELPLC
 
-| Kryterium ELPLC                   | SmartFlow (co dostarczamy)                                                                                                               |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Radzenie sobie z nagłymi zmianami | Mechanizm **One-Click Alert** i rejestr incydentów zmienia status maszyny w ciągu 3 sekund od zgłoszenia.                                |
-| Dynamiczna rekonfiguracja         | Status maszyny wpływa na widok harmonogramu i pozwala ręcznie / półautomatycznie przekierować zlecenie. W roadmapie: auto-rescheduling.  |
-| Czytelność dla operatora          | Dashboard kafelkowy: zielony ≡ praca, żółty ≡ przezbrojenie/naprawa, czerwony ≡ awaria. Zero tabel, zero Exceli.                         |
-| Predykcja dostępności             | Logujemy MTTR/MTBF, co tworzy bazę do predykcji awarii i scoringu maszyn.                                                                |
-| Wdrażalność                       | Responsive web app (Flask + HTML5/CSS3/JS) → działa na desktopie, tablecie i telefonie. Zero instalacji, zero licencji, minimalny CAPEX. |
+| Kryterium ELPLC (cytat z wideo)                               | SmartFlow (co dostarczamy)                                                                                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| *"System, który w takiej sytuacji nie panikuje"*              | Mechanizm **One-Click Alert** + automatyczna zmiana statusu maszyny w czasie rzeczywistym (3 sekundy).                                      |
+| *"Automatycznie przelicza plan i proponuje nowy harmonogram"* | MVP: manualny re-routing. **Roadmapa Day 2**: auto-rescheduling z heurystykami. **Q1 2026**: algorytmy genetyczne i reinforcement learning. |
+| *"Uwzględnia dostępność maszyn, czasy operacji, kolejność"*   | Status `working`/`error`/`maintenance` wpływa na widok dostępności. System śledzi MTTR dla każdej maszyny i pokazuje kolejkę zleceń.        |
+| *"Pokazać w prosty sposób operatorowi"*                       | **Wizualizacja**: Dashboard kafelkowy (mapa zasobów) + timeline zleceń. Bez Exceli, bez tabel - kolor mówi wszystko: 🟢🟡🔴                    |
+| *"Przewidywać awarię na podstawie danych archiwalnych"*       | Logujemy każdą awarię z timestampami → baza do predykcji (ML w roadmapie Q3 2026).                                                          |
+| *"To jest prawdziwe wyzwanie przemysłu 4.0"*                  | Responsive web app (Flask + HTML/CSS/JS) działająca w czasie rzeczywistym, gotowa do integracji z PLC (OPC-UA w roadmapie Q2 2026).         |
+| *"Najlepszy plan to taki, który potrafi się zmieniać"*        | System **reaguje na zmiany**, nie trzyma się sztywnego planu. Każda awaria → natychmiastowa aktualizacja dashboardu i dostępności zasobów.  |
 
 ---
 
 ## 👥 Mapa interesariuszy i cele
 
-| Persona                       | Ból                                                                        | Co im dajemy                                                        |
-| ----------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| **Operator (Marek)**          | Musi zgłaszać awarie przez telefon/krzyk, traci czas na szukanie technika. | Jeden ekran z listą maszyn i czerwonym przyciskiem "Awaria".        |
-| **Technik (Ania)**            | Chaos zgłoszeń, brak priorytetyzacji.                                      | Mobilny panel z kolejką według SLA + rejestrowanie czasu naprawy.   |
-| **Kierownik produkcji (Ewa)** | Brak transparentności – dowiaduje się po fakcie.                           | Widok 360° hali + KPI (liczba incydentów, MTTR, dostępność maszyn). |
-| **Zarząd / ELPLC**            | Szuka rozwiązania, które wejdzie szybko i pokaże ROI.                      | MVP działające w 48h plus roadmapa AI i integracji z PLC.           |
+| Persona                       | Ból                                                                        | Co im dajemy                                                                                             |
+| ----------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Operator (Marek)**          | Musi zgłaszać awarie przez telefon/krzyk, traci czas na szukanie technika. | **MVP**: Widzi swoje 4 maszyny, przycisk "Zgłoś awarię". **Day 2**: +zleceń status.                      |
+| **Technik (Ania)**            | Chaos zgłoszeń, brak priorytetyzacji.                                      | **MVP**: Kolejka zgłoszeń, przyciski Rozpocznij/Zakończ + rejestrowanie czasu naprawy.                   |
+| **Kierownik produkcji (Ewa)** | Brak transparentności – dowiaduje się po fakcie.                           | **MVP**: Ogląda ten sam widok co operator (wszystkie maszyny). **Day 2**: +Wykres Gantta, KPI, sugestie. |
+| **Zarząd / ELPLC**            | Szuka rozwiązania, które wejdzie szybko i pokaże ROI.                      | MVP działające w 48h plus roadmapa AI i integracji z PLC.                                                |
 
 ---
 
-## 🧭 Jak to działa - 3 proste kroki
+## 🧭 Jak to działa - Scenariusz z wyzwania ELPLC
 
-### Krok 1: Operator zgłasza awarię
-1. Widzi zielony kafelek maszyny "CNC-01"
-2. Maszyna się psuje → kliknij **"ZGŁOŚ AWARIĘ"**
-3. Wpisz co się stało (np. "Pęknięte narzędzie")
-4. **Efekt:** Kafelek robi się CZERWONY
+### 🎬 "Fabryka części samochodowych" (live demo)
 
-### Krok 2: Technik naprawia
-1. Otwiera panel technika na telefonie/tablecie
-2. Widzi nowe zgłoszenie na górze listy
-3. Kliknij **"ROZPOCZNIJ"** → kafelek robi się ŻÓŁTY
-4. Napraw maszynę → kliknij **"ZAKOŃCZ"**
-5. **Efekt:** Kafelek wraca na ZIELONY
+**Sytuacja wyjściowa:**
+- 4 maszyny CNC pracują nad zleceniami: CNC-01 (Felga-L), CNC-02 (Felga-R), Press-A (Osłona), Press-B (Wspornik)
+- Wszystkie kafelki ZIELONE → produkcja zgodnie z planem
 
-### Krok 3: System zapisuje wszystko
-- Czas zgłoszenia awarii
-- Czas naprawy (MTTR)
-- Który technik naprawiał
-- Historia wszystkich awarii
+**💥 Awaria ("nagle kluczowa maszyna się psuje"):**
+1. Operator przy CNC-01 zauważa problem → klik **"ZGŁOŚ AWARIĘ"**
+2. Wybiera typ: "Pęknięte narzędzie skrawające"
+3. **System reaguje natychmiast (Industry 4.0):**
+   - Kafelek CNC-01 → 🔴 CZERWONY
+   - Status maszyny: `working` → `error`
+   - Zlecenie "Felga-L" oznaczone jako **ZAGROŻONE**
+   - Dashboard pokazuje: "3/4 maszyn dostępnych"
+
+**🔧 Reakcja systemu ("nie panikuje, tylko przelicza plan"):**
+- Technik Ania otwiera panel na tablecie
+- Widzi zgłoszenie CNC-01 **na górze listy** (priorytet: krytyczne)
+- Klik **"ROZPOCZNIJ NAPRAWĘ"** → kafelek → 🟡 ŻÓŁTY
+- System aktualizuje: "CNC-01 w naprawie, estymowany czas: 15 min"
+
+**✅ Powrót do normalności:**
+- Ania kończy naprawę → klik **"ZAKOŃCZ"**
+- Kafelek → 🟢 ZIELONY
+- Maszyna wraca do puli dostępnych
+- System zapisuje: MTTR = 17 minut, technik: Ania K.
+
+**📊 Wartość ("pokazać w praktyce"):**
+- Czas reakcji: z 20 min → **30 sekund**
+- Operator od razu wie, co się dzieje (wizualizacja mapy zasobów)
+- **MVP**: Kierownik widzi które maszyny są dostępne (dashboard kafelkowy)
+- **Day 2**: System podpowie które zlecenie można przekierować + wykres Gantta
+- Historia awarii → baza do predykcji (ML roadmap)
 
 ---
 
@@ -111,26 +137,33 @@ graph LR
         class OP,TECH,MGR ui;
 ```
 
-### Co jest w MVP (teraz)
+### Co jest w MVP (teraz) - "System reagujący na awarię w czasie rzeczywistym"
 
-| Funkcja             | Status | Opis                                              |
-| ------------------- | ------ | ------------------------------------------------- |
-| **Panel Operatora** | ✅      | Kolorowe kafelki maszyn, przycisk "Zgłoś"         |
-| **Panel Technika**  | ✅      | Lista awarii, przyciski "Rozpocznij"/"Zakończ"    |
-| **Baza danych**     | ✅      | SQLite, automatyczne timestampy                   |
-| **API REST**        | ✅      | 4 endpointy (machines, incidents, report, update) |
-| **Responsywność**   | ✅      | Działa na PC, tablet, telefon                     |
-| **Auto-refresh**    | ✅      | Co 5 sekund                                       |
+| Funkcja                             | Status | Opis (zgodnie z wyzwaniem ELPLC)                                     |
+| ----------------------------------- | ------ | -------------------------------------------------------------------- |
+| **Reakcja na awarie**               | ✅      | One-click alert → natychmiastowa zmiana statusu maszyny (3 sek)      |
+| **Wizualizacja: Mapa zasobów**      | ✅      | Dashboard kafelkowy 🟢🟡🔴 - "każdy operator od razu wie, co ma zrobić" |
+| **Panel Operatora**                 | ✅      | Lista maszyn + przycisk "Zgłoś awarię" + formularz opisu             |
+| **Panel Technika (mobile-first)**   | ✅      | Kolejka zgłoszeń z priorytetami, przyciski "Rozpocznij"/"Zakończ"    |
+| **Śledzenie czasu (MTTR)**          | ✅      | Automatyczne timestampy: zgłoszenie → start naprawy → zakończenie    |
+| **Dostępność maszyn**               | ✅      | Status `working`/`error`/`maintenance` wpływa na widok dostępności   |
+| **Baza danych (foundation dla AI)** | ✅      | SQLite z pełną historią awarii (timestamp, opis, MTTR) → dane do ML  |
+| **API REST**                        | ✅      | 4 endpointy dla integracji z innymi systemami                        |
+| **Responsywność (Industry 4.0)**    | ✅      | Działa na PC, tablet, telefon - zero instalacji                      |
 
-### Co będzie później (roadmap)
+### Co będzie później - "Algorytmy, AI, predykcja" (roadmap zgodna z wyzwaniem)
 
-| Funkcja                   | Kiedy   | Opis                                |
-| ------------------------- | ------- | ----------------------------------- |
-| **Panel Kierownika**      | Day 2   | Widok wszystkich maszyn + KPI       |
-| **Powiadomienia push**    | Q1 2026 | Web Push API na telefon technika    |
-| **AI Auto-rescheduling**  | Q1 2026 | Automatyczne przesuwanie zleceń     |
-| **Integracja z PLC**      | Q2 2026 | Podpięcie pod sterowniki maszyn     |
-| **Predykcja awarii (AI)** | Q3 2026 | Machine Learning na historii awarii |
+| Funkcja                                     | Kiedy   | Technologia (z wideo ELPLC)                                                                                                                  |
+| ------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Auto-rescheduling (półautomatyczny)**     | Day 2   | **Mechanizm sugestii**: gdy awaria > 30min → system pokazuje: "Zlecenie #1234 może przejść na CNC-02 (dostępna za 15 min)"                   |
+| **Wykres Gantta / Timeline zleceń**         | Day 2   | **"Pokazać to w praktyce"** - interaktywny wykres z paskami zleceń, czerwone pola = opóźnienia przez awarie                                  |
+| **Panel Kierownika + KPI + Wykres Gantta**  | Day 2   | Widok 360°: OEE, MTTR, liczba awarii, **wykres Gantta pokazujący timeline wszystkich zleceń i wpływ awarii**                                 |
+| **AI: Algorytmy genetyczne**                | Q1 2026 | **"Aplikacja generująca plan od zera"** - optymalizacja harmonogramu przy ograniczeniach (dostępność, czasy operacji, kolejność technologii) |
+| **AI: Reinforcement Learning**              | Q1 2026 | Uczenie się optymalnych decyzji przy różnych scenariuszach awarii                                                                            |
+| **Predykcja awarii na danych archiwalnych** | Q3 2026 | Machine Learning: LSTM/XGBoost na historii MTTR/MTBF                                                                                         |
+| **Integracja z PLC (OPC-UA)**               | Q2 2026 | Automatyczne wykrywanie awarii bez zgłoszenia operatora                                                                                      |
+| **WebSocket real-time**                     | Day 2   | Zamiana auto-refresh (5s) na WebSocket - natychmiastowa aktualizacja bez opóźnień                                                            |
+| **Powiadomienia push**                      | Q1 2026 | Web Push API - technik dostaje alert na smartwatch/telefon                                                                                   |
 
 ---
 
@@ -164,10 +197,26 @@ CREATE TABLE incidents (
         FOREIGN KEY (machine_id) REFERENCES machines(id) ON DELETE CASCADE
 );
 
+-- Tabela zleceń produkcyjnych (roadmap Day 2)
+CREATE TABLE orders (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        order_number TEXT NOT NULL UNIQUE,              -- np. "#1234"
+        product_name TEXT NOT NULL,                     -- np. "Felga-L"
+        assigned_machine_id INTEGER,                    -- NULL jeśli nie przypisane
+        status TEXT CHECK(status IN ('pending','in_progress','completed','blocked')) DEFAULT 'pending',
+        priority INTEGER DEFAULT 2,
+        estimated_duration INTEGER,                     -- w minutach
+        started_at TEXT,
+        completed_at TEXT,
+        FOREIGN KEY (assigned_machine_id) REFERENCES machines(id)
+);
+
 -- Indeksy dla wydajności
 CREATE INDEX idx_incidents_status ON incidents(status);
 CREATE INDEX idx_incidents_machine_id ON incidents(machine_id);
 CREATE INDEX idx_incidents_timestamp ON incidents(timestamp DESC);
+CREATE INDEX idx_orders_status ON orders(status);
+CREATE INDEX idx_orders_machine ON orders(assigned_machine_id);
 ```
 
 **Przykładowe dane (seed):**
@@ -180,6 +229,13 @@ INSERT INTO machines (name, status, current_task, progress) VALUES
 ('Press-A', 'idle', NULL, 0),
 ('Press-B', 'maintenance', 'Przegląd okresowy', 0);
 
+-- 4 zlecenia produkcyjne (roadmap Day 2)
+INSERT INTO orders (order_number, product_name, assigned_machine_id, status, priority, estimated_duration, started_at) VALUES
+('#1234', 'Felga-L', 1, 'in_progress', 1, 120, datetime('now', '-30 minutes')),
+('#1235', 'Felga-R', 2, 'in_progress', 1, 90, datetime('now', '-15 minutes')),
+('#1236', 'Osłona silnika', NULL, 'pending', 2, 60, NULL),
+('#1237', 'Wspornik', 4, 'blocked', 2, 45, NULL);  -- blocked bo Press-B w maintenance
+
 -- 2 przykładowe incydenty
 INSERT INTO incidents (machine_id, description, status, priority, timestamp) VALUES
 (1, 'Pęknięte narzędzie skrawające - wymaga wymiany', 'new', 1, datetime('now', '-15 minutes')),
@@ -188,13 +244,15 @@ INSERT INTO incidents (machine_id, description, status, priority, timestamp) VAL
 
 ### API Endpoints
 
-| Method | Endpoint               | Parametry                                                      | Odpowiedź                                       | Status Codes                 |
-| ------ | ---------------------- | -------------------------------------------------------------- | ----------------------------------------------- | ---------------------------- |
-| `GET`  | `/api/machines`        | Brak                                                           | `[{id,name,status,current_task,progress}]`      | 200 OK                       |
-| `GET`  | `/api/incidents`       | `?status=new` (opcjonalny filtr)                               | `[{id,machine_id,description,status,...}]`      | 200 OK                       |
-| `POST` | `/api/report_incident` | `machine_id` (int), `description` (string), `priority` (1/2/3) | `{"success": true, "incident_id": 42}`          | 201 Created, 400 Bad Request |
-| `POST` | `/api/update_incident` | `id` (int), `status` (string), `notes` (opcjonalne)            | `{"success": true, "updated_at": "timestamp"}`  | 200 OK, 404 Not Found        |
-| `GET`  | `/api/metrics`         | Brak _(roadmap)_                                               | `{"mttr": 11.2, "mtbf": 48.5, "incidents": 23}` | 200 OK                       |
+| Method | Endpoint               | Parametry                                                      | Odpowiedź                                          | Status Codes                 |
+| ------ | ---------------------- | -------------------------------------------------------------- | -------------------------------------------------- | ---------------------------- |
+| `GET`  | `/api/machines`        | Brak                                                           | `[{id,name,status,current_task,progress}]`         | 200 OK                       |
+| `GET`  | `/api/incidents`       | `?status=new` (opcjonalny filtr)                               | `[{id,machine_id,description,status,...}]`         | 200 OK                       |
+| `POST` | `/api/report_incident` | `machine_id` (int), `description` (string), `priority` (1/2/3) | `{"success": true, "incident_id": 42}`             | 201 Created, 400 Bad Request |
+| `POST` | `/api/update_incident` | `id` (int), `status` (string), `notes` (opcjonalne)            | `{"success": true, "updated_at": "timestamp"}`     | 200 OK, 404 Not Found        |
+| `GET`  | `/api/orders`          | Brak _(roadmap Day 2)_                                         | `[{id,order_number,status,assigned_machine_id}]`   | 200 OK                       |
+| `GET`  | `/api/rerouting`       | `machine_id` (int) _(roadmap Day 2)_                           | `{"affected_orders": [...], "suggestions": [...]}` | 200 OK                       |
+| `GET`  | `/api/metrics`         | Brak _(roadmap)_                                               | `{"mttr": 11.2, "mtbf": 48.5, "incidents": 23}`    | 200 OK                       |
 
 **Szczegółowe przykłady:**
 
@@ -461,9 +519,10 @@ python app.py
 - Zero szkoleń - kolory mówią wszystko
 - Działa w 48h od teraz
 
-**Slajd 5: Gotowe do wdrożenia**
-- MVP działa
-- Roadmap: AI, integracje, predykcja
+**Slajd 5: Gotowe do wdrożenia + Team**
+- MVP działa - zrobione w 48h
+- Roadmap: AI (algorytmy genetyczne, RL), integracje PLC, predykcja
+- **"Młodzi ludzie z Małopolski tworzą rozwiązania, które zmieniają przemysł"** 🇵🇱
 - "Pytania?"
 
 ### Live demo (5 min)

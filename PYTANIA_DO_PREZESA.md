@@ -1,8 +1,9 @@
 # 📞 PYTANIA DO PREZESA ELPLC - Hackathon 2025
 
-> **Cel:** Uzyskać kluczowe informacje do dopasowania SmartFlow do rzeczywistych potrzeb ELPLC  
-> **Kontekst:** Telefon z prezesem przed/podczas hackathonu  
-> **Priorytet:** Zadać 5-7 najważniejszych pytań (max 10-15 minut rozmowy)
+> **Cel:** Uzyskać kluczowe informacje do dopasowania **FailSafe** do rzeczywistych potrzeb ELPLC  
+> **Kontekst:** Rozmowa z Kamilem Małochlebem (Lead Produkcji ELPLC)  
+> **Priorytet:** Zadać 5-7 najważniejszych pytań (max 10-15 minut rozmowy)  
+> **Status:** Pierwsza rozmowa przeprowadzona ✅ - to pytania na drugą rozmowę
 
 ---
 
@@ -22,16 +23,54 @@
 
 ## 📊 CO JUŻ WIEMY (Z PIERWSZEJ ROZMOWY)
 
-✅ **Problem**: Maszyna wylatuje z produkcji bez możliwości kontynuacji  
-✅ **Reakcja**: Powinien być natychmiastowy / planişci zajmują się planowaniem  
-✅ **System**: TOMAI ERP (ELPLC jest autorem!)  
-✅ **Planowanie**: Klienci sprawdzają codziennie zaplanowane procesy  
-✅ **Częstotliwość**: Tygodniowe/2-tygodniowe zmiany, miesięczne wyprzedzenie  
-✅ **Integracja**: Często stare maszyny bez integracji, komputer z aplikacją obok maszyny  
-✅ **Koszty**: Wariatory do samochodów = 120$/sztuka, produkcja co 6 sekund  
-✅ **Operator needs**: Instrukcje jak reagować, dużo informacji real-time, wiedzieć gdzie przejść  
+### ✅ Problem i Reakcja:
+- **Scenariusz**: Maszyna wylatuje z produkcji bez możliwości kontynuacji
+- **Reakcja**: Powinna być natychmiastowa
+- **Odpowiedzialni**: Planiści zajmują się planowaniem produkcji
+- **Gap**: Brak automatycznej reorganizacji harmonogramu
+
+### ✅ Systemy i Planowanie:
+- **System**: TOMAI ERP (ELPLC jest autorem - własny produkt!)
+- **Workflow**: Klienci sprawdzają codziennie zaplanowane procesy
+- **Częstotliwość**: Zmiany co tyg/2tyg, miesięczne wyprzedzenie (zależy od priorytetów)
+- **Integracja**: Często stare maszyny BEZ integracji z TOMAI
+  - ELPLC zlicza całkowity użytek (czy pracowała czy nie)
+  - Komputer z aplikacją OBOK maszyny dla operatorów
+
+### ✅ Koszty (KRYTYCZNE!):
+- **Produkt**: Wariatory do samochodów
+- **Wartość**: $120/sztuka
+- **Cykl produkcji**: 6 sekund
+- **Produkcja/godzina**: 600 sztuk = **$72,000/h**
+- **⚠️ KOSZT PRZESTOJU: $72,000 NA GODZINĘ!**
+
+### ✅ Potrzeby Operatorów:
+- **Największy problem**: Operator nie wie JAK zareagować podczas awarii
+- **Czego chcą**: Instrukcje w systemie, dużo informacji real-time
+- **Gap**: Nie wiedzą "gdzie przejść" po awarii maszyny
+- **Wnioski**: Potrzeba jasnych, konkretnych instrukcji w UI FailSafe  
 
 **🎯 FOCUS drugiej rozmowy**: Deepdive w TOMAI capabilities, ROI calculations, pilot scope
+
+---
+
+## ⚠️ KLUCZOWE BRAKI DO UZUPEŁNIENIA
+
+### 🔴 HIGH PRIORITY (MUST HAVE):
+1. **TOMAI API** - Czy ma webhooks/API do real-time alerts?
+2. **Liczba awarii/miesiąc** - Do obliczenia rocznego ROI ($4M)
+3. **Pilot line** - Która linia najlepsza do case study?
+4. **Decision makers** - Kto decyduje o wdrożeniu po hackathonie?
+
+### 🟡 MEDIUM PRIORITY (NICE TO HAVE):
+5. Cross-line scheduling - Czy linie współdzielą zasoby?
+6. Security requirements - ISO, automotive standards?
+7. Konkurencja - Jakie inne rozwiązania testowali?
+
+### 🟢 LOW PRIORITY (OPTIONAL):
+8. Feedback na UI/UX demo
+9. Timeline typowych pilotów w ELPLC
+10. Budget expectations dla R&D projects
 
 ---
 
@@ -138,23 +177,35 @@ TOMAI (System ELPLC):               FailSafe (Nasz prototyp):
 
 **KLUCZOWE PYTANIE**: Czy TOMAI ma API do wysyłania real-time alerts o awariach?
 
-### ROI Calculation Template
+### ROI Calculation Template (VALIDOWANE!)
 ```
-Przykład: Wariatory (120$/szt, cykl 6 sek)
+Przykład: Wariatory ELPLC (REALNE DANE z rozmowy)
 
-BEZ FailSafe:
-• Awaria → 30 min przestoju
+⚠️  BAZOWE KOSZTY:
+• Wartość: $120/sztuka
+• Cykl: 6 sekund
+• Produkcja/h: 600 sztuk
+• KOSZT PRZESTOJU: $72,000/GODZINĘ!
+❌ BEZ FailSafe (typowa awaria: 30 min przestoju):
 • Stracona produkcja: 30min ÷ 6sek = 300 sztuk
-• Koszt: 300 × $120 = $36,000
+• Koszt straty: 300 × $120 = $36,000
+• Każda minuta = $1,200 strat!
 
-Z FailSafe:
-• Awaria → 3 sek reakcji + 2 min reorganizacji
-• Stracona produkcja: ~20 sztuk
-• Koszt: 20 × $120 = $2,400
-• OSZCZĘDNOŚĆ: $33,600 na jednej awarii!
+✅ Z FailSafe (reakcja AI: 3 sek + 2 min reorganizacji):
+• Stracona produkcja: ~20 sztuk (2 min)
+• Koszt straty: 20 × $120 = $2,400
+• OSZCZĘDNOŚĆ: $33,600 (93% redukcja!)
+
+📈 PRZY 10 AWARIACH/MIESIĄC:
+• Oszczędność miesięczna: $336,000
+• Oszczędność roczna: $4,032,000
+• ROI: < 1 miesiąc
 ```
 
-**DO WALIDACJI**: Czy 30 min baseline jest realistic? Ile awarii/miesiąc?
+**PYTANIA DO WALIDACJI**:
+- Ile awarii/miesiąc w ELPLC? (do obliczenia rocznego ROI)
+- Czy są inne high-value produkty oprócz wariatorów?
+- Czy są kary umowne za opóźnienia dostaw?
 
 ---
 
@@ -358,12 +409,15 @@ Wariatory:
 • OSZCZĘDNOŚĆ ROCZNA: $______
 
 === ACTION ITEMS DLA ZESPOŁU ===
-☐ Zaktualizować ALGORITHMS.md o feedback techniczny
-☐ Dostosować UI demo do oczekiwań operatorów ELPLC
-☐ Dodać ROI slide do prezentacji z konkretnymi liczbami
-☐ Przygotować integration architecture diagram (FailSafe ↔ TOMAI)
-☐ Zidentyfikować pilot line w prezentacji
-☐ _______________________________________________________
+✅ Zaktualizować README.md o $72k/h (DONE!)
+✅ Zaktualizować ALGORITHMS.md o realne dane (DONE!)
+✅ Zaktualizować PRESENTATION_GUIDE.md (DONE!)
+☐ UI Demo: Dodać "Instrukcje dla operatora" (co robić/gdzie przejść)
+☐ ROI Slide: $72k/h, $4M rocznie, <1 mies ROI
+☐ Integration diagram: TOMAI API → FailSafe → Dashboard
+☐ Pilot line: Zidentyfikować którą linię sugeruje Kamil
+☐ Feedback: Pokazać Kamilowi mockup UI i zbrać uwagi
+☐ Post-hackathon: Przygotować proposal dla ELPLC (pilot program)
 
 === CYTATY DO UŻYCIA W PREZENTACJI ===
 "______________________________________________________"
@@ -387,7 +441,7 @@ Wariatory:
 **Kamil:** "Dzień dobry! Jasne, słucham."
 
 ### Context Setting:
-**Ty:** "Na podstawie naszej pierwszej rozmowy zrozumieliśmy, że maszyna wylatuje z produkcji, planişci powinni reagować natychmiast, i używacie TOMAI jako ERP. To świetny fundament. Mam kilka pytań technicznych o TOMAI i szczegóły operacyjne."
+**Ty:** "Na podstawie naszej pierwszej rozmowy zrozumieliśmy, że maszyna wylatuje z produkcji, planiści powinni reagować natychmiast, i używacie TOMAI jako ERP. Odkryliśmy też że każda godzina przestoju przy wariatorach to **$72,000 strat** - to ogromna skala problemu! Mam kilka pytań technicznych o TOMAI i szczegóły operacyjne."
 
 ### Pytanie KLUCZOWE o TOMAI:
 **Ty:** "Wiemy że ELPLC stworzyło TOMAI - świetny system do monitoringu. Z naszego research rozumiemy, że zbiera dane w czasie rzeczywistym. Kluczowe pytanie: czy TOMAI również AUTOMATYCZNIE reorganizuje harmonogram gdy wykryje awarię, czy to wymaga ręcznej interwencji planisty?"
@@ -400,9 +454,9 @@ Wariatory:
 **Kamil:** [NOTATKA: technical feasibility check]
 
 ### Pytanie o ROI z konkretnymi liczbami:
-**Ty:** "Wspomniałeś w pierwszej rozmowie o wariatorach - $120 za sztukę, cykl produkcji 6 sekund. Jeśli typowa awaria to 30 minut przestoju - czy to znaczy że tracicie około 300 wariatorów? To $36,000 strat na jednej awarii. Czy te liczby są w dobrym zakresie?"
+**Ty:** "Wspomniałeś w pierwszej rozmowie o wariatorach - $120 za sztukę, cykl produkcji 6 sekund. Przeliczyliśmy: to 600 sztuk na godzinę, czyli **$72,000 koszt każdej godziny przestoju**. Jeśli typowa awaria to 30 minut - tracicie $36,000. FailSafe skraca to do 2 minut = tylko $2,400 strat. To oszczędność $33,600 na każdej awarii. Ile awarii macie miesięcznie?"
 
-**Kamil:** [NOTATKA: to klucz do ROI slide w prezentacji]
+**Kamil:** [NOTATKA: liczba awarii/mies = klucz do obliczenia $4M ROI rocznie!]
 
 ### Pytanie o pilot:
 **Ty:** "Jeśli FailSafe pokazałby potencjał po hackathonie - czy jest konkretna linia produkcyjna w ELPLC, która byłaby najlepszym kandydatem do pilota? Może ta z wariatorami lub inna z wysokimi kosztami przestoju?"

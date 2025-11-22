@@ -20,247 +20,412 @@
 
 ---
 
-## ⚡ PYTANIA PRIORYTETOWE (TOP 5)
+## 📊 CO JUŻ WIEMY (Z PIERWSZEJ ROZMOWY)
+
+✅ **Problem**: Maszyna wylatuje z produkcji bez możliwości kontynuacji  
+✅ **Reakcja**: Powinien być natychmiastowy / planişci zajmują się planowaniem  
+✅ **System**: TOMAI ERP (ELPLC jest autorem!)  
+✅ **Planowanie**: Klienci sprawdzają codziennie zaplanowane procesy  
+✅ **Częstotliwość**: Tygodniowe/2-tygodniowe zmiany, miesięczne wyprzedzenie  
+✅ **Integracja**: Często stare maszyny bez integracji, komputer z aplikacją obok maszyny  
+✅ **Koszty**: Wariatory do samochodów = 120$/sztuka, produkcja co 6 sekund  
+✅ **Operator needs**: Instrukcje jak reagować, dużo informacji real-time, wiedzieć gdzie przejść  
+
+**🎯 FOCUS drugiej rozmowy**: Deepdive w TOMAI capabilities, ROI calculations, pilot scope
+
+---
+
+## ⚡ PYTANIA PRIORYTETOWE (DRUGA ROZMOWA)
 
 ### 1️⃣ NAJWAŻNIEJSZE: Jaki jest największy problem z awariami?
 
 **Pytanie:**
-> "Jakie są typowe scenariusze awarii w halach produkcyjnych ELPLC? Co się dzieje, gdy np. CNC przestaje działać w trakcie produkcji komponentów?"
+> "Wiemy już, że maszyna wylatuje z produkcji bez możliwości kontynuacji. Jakie są najczęstsze przyczyny takich awarii i jak szybko muszą reagować planiści?"
 
 **Po co pytamy:**
-- Zrozumieć **real pain point**
-- Dopasować demo do rzeczywistego scenariusza
-- Uzyskać konkretne liczby (ile czasu trwa reakcja teraz?)
+- Potwierdzić że **natychmiastowa reakcja** jest kluczowa
+- Zrozumieć workflow między operatorami a planistami
+- Uzyskać konkretne przykłady z linii produkcyjnych ELPLC
 
 **Czego słuchać:**
-- Jak długo trwa **obecnie** reorganizacja harmonogramu? (30 min? 2h?)
-- Kto podejmuje decyzje? (planista? kierownik produkcji?)
-- Czy używają Excel/ERP czy innego systemu?
+- Czy są bottlenecki w komunikacji między operatorami a planistami?
+- Jakie są konsekwencje opóźnienia reakcji na awarię?
+- Czy starsze maszyny (bez integracji) sprawiają więcej problemów?
 
 ---
 
 ### 2️⃣ Jak wygląda proces planowania produkcji?
 
 **Pytanie:**
-> "Jak obecnie planujecie harmonogram produkcji w halach ELPLC? Kto za to odpowiada i jakie narzędzia używacie?"
+> "Klienci sprawdzają codziennie czy mają zaplanowane procesy. Jak wygląda przepływ informacji między systemem a operatorami przy starszych maszynach bez integracji?"
 
 **Po co pytamy:**
-- Zrozumieć **workflow** planowania
-- Sprawdzić czy mają już jakieś systemy (TOMAI? ERP?)
-- Gdzie SmartFlow może się wpiąć
+- Zrozumieć gdzie jest **gap** w automatyzacji
+- Sprawdzić jak komputery obok maszyn są używane przez operatorów
+- Czy FailSafe może pomóc w komunikacji dla starszych maszyn
 
 **Czego słuchać:**
-- Czy harmonogram jest statyczny czy dynamiczny?
-- Czy mają system MES/ERP zintegrowany z maszynami?
-- Jak często zmieniają plan? (codziennie? co godzinę?)
+- Jak operatorzy raportują postęp pracy na starszych maszynach?
+- Czy planiści mają realtime visibility na wszystkie maszyny?
+- Jaki jest największy problem z miesięcznym/2-tygodniowym wyprzedzeniem?
 
 ---
 
-### 3️⃣ TOMAI - jak działa w praktyce?
+### 3️⃣ TOMAI - jak działa w praktyce i gdzie są ograniczenia?
 
 **Pytanie:**
-> "Czytałem o systemie TOMAI do monitoringu produkcji. Jak on działa w praktyce? Czy wykrywa awarie automatycznie?"
+> "ELPLC stworzyło TOMAI - system do monitoringu w czasie rzeczywistym. Z naszego research wiemy, że zbiera dane i identyfikuje mikro-przestoje. Czy TOMAI proponuje też automatyczną reorganizację harmonogramu przy awarii, czy to wciąż wymaga ręcznej interwencji?"
 
 **Po co pytamy:**
-- Zrozumieć **jak TOMAI współpracuje** z maszynami
-- Czy TOMAI ma API/integrację?
-- **Czy TOMAI automatycznie reorganizuje harmonogram?** (pewnie nie - to nasza nisza!)
+- **Potwierdzić naszą hipotezę**: TOMAI monitoruje, ale NIE reorganizuje automatycznie
+- Znaleźć **komplementarność**: TOMAI + FailSafe = kompletny ekosystem
+- Zrozumieć czy TOMAI ma API do integracji
 
 **Czego słuchać:**
-- TOMAI **monitoruje** czy też **reaguje**?
-- Czy operatorzy dostają powiadomienia o awariach?
-- Czy TOMAI sugeruje alternatywne rozwiązania? (pewnie nie)
+- "TOMAI pokazuje problem, ale planista musi ręcznie działać" ← to nasza szansa!
+- Czy są plany rozbudowy TOMAI o automatyczną reakcję?
+- Jak długo wdrażali TOMAI u klientów (BMZ Poland case study)?
 
 ---
 
-### 4️⃣ Ile kosztuje godzina przestoju?
+### 4️⃣ Jak policzyć ROI dla automatycznej reorganizacji?
 
 **Pytanie:**
-> "Jak duże są straty finansowe przy typowej awarii maszyny? Czy możecie podać przybliżony koszt godziny przestoju produkcji?"
+> "Wspomniał Pan, że wariatory do samochodów to 120$ za sztukę, produkcja co 6 sekund. Jeśli FailSafe skróci czas reakcji na awarię z 30 minut do 3 sekund - ile takich wariatorów można dodatkowo wyprodukować w zaoszczędzonym czasie?"
 
 **Po co pytamy:**
-- Uzyskać **konkretne liczby do ROI**
-- Pokazać w prezentacji: "SmartFlow oszczędza X zł na awarii"
-- Zrozumieć skalę problemu
+- Przeliczyć **konkretną oszczędność** w sztukach produktu
+- Pokazać ROI w języku biznesowym, nie tylko "minuty oszczędności"
+- Uzyskać blessing na użycie tych liczb w prezentacji
 
 **Czego słuchać:**
-- Koszt przestoju (500 zł/min? 1000 zł/min?)
-- Ile awarii mają miesięcznie/rocznie?
-- Jaki % produkcji tracą przez przestoje?
+- Czy 30 minut przestoju to realistyczny baseline?
+- Jakie są inne high-value produkty w ELPLC (baterie e-bike, amortyzatory)?
+- Czy klienci ELPLC mają kary umowne za opóźnienia?
 
 ---
 
-### 5️⃣ Co by najbardziej pomogło operatorom?
+### 5️⃣ Jak operatorzy powinni reagować podczas awarii - deepdive
 
 **Pytanie:**
-> "Co według Pana najbardziej ułatwiłoby życie operatorom i planistom podczas awarii? Czego im brakuje w obecnych narzędziach?"
+> "Powiedział Pan, że operatorzy powinni wiedzieć jak zareagować podczas awarii i gdzie przejść. Czy obecnie mają jasne instrukcje w systemie, czy to jest knowledge w głowach ludzi? I jak wygląda komunikacja między operatorem zepsutej maszyny a resztą zespołu?"
 
 **Po co pytamy:**
-- Zrozumieć **user needs** (operator vs planista)
-- Dopasować UI SmartFlow do oczekiwań
-- Znaleźć "killer feature"
+- Zrozumieć **gap w komunikacji** i procesach
+- Potwierdzić że operatorzy chcą **dużo informacji w czasie rzeczywistym**
+- Zaprojektować UI FailSafe z konkretnymi instrukcjami dla operatorów
 
 **Czego słuchać:**
-- Czy operatorzy chcą więcej informacji czy mniej?
-- Czy chcą automatyzacji czy zachować kontrolę?
-- Jakie jest największe źródło frustracji?
+- Czy są SOPy (Standard Operating Procedures) dla awarii?
+- Jakie informacje są najbardziej przydatne: co robić? dokąd iść? kogo powiadomić?
+- Czy operatorzy mają dostęp do harmonogramu całej linii czy tylko swojej maszyny?
+
+---
+
+## 🎯 KLUCZOWE INSIGHTS DO WALIDACJI
+
+### TOMAI vs FailSafe - Komplementarność
+
+Z research wiemy:
+```
+TOMAI (System ELPLC):               FailSafe (Nasz prototyp):
+✓ Monitoring real-time              ✓ Automatyczna reakcja
+✓ Zbieranie danych                  ✓ Reorganizacja harmonogramu
+✓ Identyfikacja mikro-przestojów    ✓ Optymalizacja zadań
+✓ Raporty OEE                       ✓ Powiadomienia dla operatorów
+✗ Automatyczna reorganizacja        ✓ Gantt chart visualization
+```
+
+**KLUCZOWE PYTANIE**: Czy TOMAI ma API do wysyłania real-time alerts o awariach?
+
+### ROI Calculation Template
+```
+Przykład: Wariatory (120$/szt, cykl 6 sek)
+
+BEZ FailSafe:
+• Awaria → 30 min przestoju
+• Stracona produkcja: 30min ÷ 6sek = 300 sztuk
+• Koszt: 300 × $120 = $36,000
+
+Z FailSafe:
+• Awaria → 3 sek reakcji + 2 min reorganizacji
+• Stracona produkcja: ~20 sztuk
+• Koszt: 20 × $120 = $2,400
+• OSZCZĘDNOŚĆ: $33,600 na jednej awarii!
+```
+
+**DO WALIDACJI**: Czy 30 min baseline jest realistic? Ile awarii/miesiąc?
 
 ---
 
 ## 🔍 PYTANIA DODATKOWE (jeśli jest czas)
 
-### 6️⃣ Integracja z istniejącymi systemami
+### 6️⃣ Skala automatyzacji - 100+ robotów i wieloliniowa produkcja
 
 **Pytanie:**
-> "Jakie systemy IT już działają w ELPLC? (ERP, MES, SCADA?) Jak trudna jest integracja nowych rozwiązań?"
+> "Z research wiemy, że ELPLC ma ponad 100 aktywnych robotów i 4200 m² hal produkcyjnych. Czy awaria na jednej linii może wpłynąć na inne linie? Jak wygląda cross-line scheduling?"
 
 **Po co pytamy:**
-- Sprawdzić **technical feasibility**
-- Czy SmartFlow musi się integrować z SAP/innym ERP?
-- Jakie są wymagania techniczne?
+- Zrozumieć **skalę problemu** - to nie tylko pojedyncze maszyny
+- Sprawdzić czy jest potrzeba multi-line optimization
+- Ocenić complexity wdrożenia FailSafe w całej fabryce
+
+**Czego słuchać:**
+- Czy linie produkcyjne są niezależne czy współdzielą zasoby?
+- Jak wygląda priorytetyzacja między projektami/klientami?
+- Czy robotyzacja zmienia sposób reakcji na awarie (vs maszyny CNC)?
 
 ---
 
-### 7️⃣ Skala wdrożenia
+### 7️⃣ Integracja z istniejącymi systemami
 
 **Pytanie:**
-> "Gdyby SmartFlow miał być wdrożony w ELPLC, to na jakiej skali? Jedna hala? Wszystkie 4200 m²? Konkretne linie produkcyjne?"
+> "Wiemy że ELPLC używa TOMAI jako ERP. Jakie inne systemy działają w fabryce - SCADA dla robotów, systemy wizyjne, IoT sensors? Czy macie API/webhooks do komunikacji między systemami?"
 
 **Po co pytamy:**
-- Zrozumieć **scope** potencjalnego wdrożenia
-- Czy zaczynać od pilota czy full deployment?
-- Ile maszyn/linii trzeba obsłużyć?
+- Sprawdzić **technical feasibility** integracji FailSafe
+- Zrozumieć czy TOMAI ma otwarte API
+- Ocenić effort integracji (dni? tygodnie? miesiące?)
+
+**Czego słuchać:**
+- Czy TOMAI może wysyłać real-time events (awarie) przez API?
+- Jakie są standardy integracji w ELPLC (REST? SOAP? Message Queue?)
+- Czy są security/compliance requirements (ISO, automotive standards)?
 
 ---
 
-### 8️⃣ Decision makers i timeline
+### 8️⃣ Skala wdrożenia i pilot program
 
 **Pytanie:**
-> "Kto w ELPLC decyduje o wdrożeniu nowych technologii? Jaki jest typowy proces decyzyjny i timeline?"
+> "Gdyby FailSafe miał być wdrożony w ELPLC - czy najlepiej zacząć od pilota na jednej linii produkcyjnej, czy od razu skalować na całe 4200 m²? Która linia byłaby najlepszym case study?"
 
 **Po co pytamy:**
-- Zrozumieć **sales process** (jeśli wygramy hackathon)
-- Kto jest stakeholderem? (CTO? Kierownik produkcji? Zarząd?)
-- Jak szybko mogą podjąć decyzję? (tygodnie? miesiące?)
+- Zrozumieć **scope** potencjalnego wdrożenia po hackathonie
+- Ustalić konkretną linię do pilota (automotive? e-mobility?)
+- Zrozumieć timeline i budget expectations
+
+**Czego słuchać:**
+- Czy jest konkretna linia z największymi problemami (best candidate)?
+- Jakie są KPI success dla pilota? (% redukcji przestojów? ROI?)
+- Jak długo trwają typowe piloty nowych systemów w ELPLC?
 
 ---
 
-### 9️⃣ Konkurencja i alternatywy
+### 9️⃣ Decision makers i następne kroki po hackathonie
 
 **Pytanie:**
-> "Czy testowaliście już inne rozwiązania do automatycznego planowania produkcji? Co działało, a co nie?"
+> "Jeśli FailSafe wygra hackathon lub pokaże potencjał - kto w ELPLC powinien być zaangażowany w dalsze rozmowy? Czy to Pan jako lead produkcji, zespół R&D, czy może zarząd biorąc pod uwagę że ELPLC ma status CBR?"
 
 **Po co pytamy:**
-- Zrozumieć **competitive landscape**
-- Czego unikać (błędy konkurencji)
-- Jakie są must-have features?
+- Zrozumieć **next steps** po hackathonie
+- Zidentyfikować champions w organizacji
+- Sprawdzić czy CBR status oznacza większą otwartość na innowacje
+
+**Czego słuchać:**
+- Czy ELPLC ma budget na R&D projects?
+- Jakie są kryteria decyzyjne (ROI? innovation? competitive advantage?)
+- Czy byliby otwarci na partnership w rozwoju FailSafe?
 
 ---
 
-### 🔟 Feedback na nasz pomysł
+### 🔟 Konkurencja, alternatywy i Industry 4.0
 
 **Pytanie:**
-> "Krótko o FailSafe: system reaguje na awarię w 3 sekundy i automatycznie przelicza harmonogram. Brzmi to dla Pana jako realne rozwiązanie problemu?"
+> "ELPLC to pionier Industry 4.0 w Polsce z statusem CBR. Czy obserwujecie rozwiązania konkurencji - może na Warsaw Industry Week 2024 albo innych eventach? Jakie trendy w smart factory są najbardziej obiecujące?"
 
 **Po co pytamy:**
-- Uzyskać **wczesny feedback**
-- Sprawdzić czy nasz koncept ma sens dla ELPLC
-- Zidentyfikować potencjalne zastrzeżenia
+- Zrozumieć **jak ELPLC patrzy na rynek** smart manufacturing
+- Znaleźć white space dla FailSafe
+- Pokazać że śledzimy branżę (Warsaw Industry Week mention)
+
+**Czego słuchać:**
+- Czy widzieli automated scheduling u konkurencji/klientów?
+- Jakie są must-have features vs nice-to-have?
+- Czy AI/ML w produkcji to przyszłość czy hype?
+
+---
+
+### 1️⃣1️⃣ Feedback na prototyp i demo
+
+**Pytanie:**
+> "Pokażemy Panu nasze demo: operator zgłasza awarię CNC, system w 3 sekundy przelicza harmonogram i przełoży zadania na inne maszyny. Wizualizacja Gantt chart + powiadomienia dla operatorów. Czy to jest coś co widziałby Pan w hali ELPLC?"
+
+**Po co pytamy:**
+- Uzyskać **konkretny feedback** na UI/UX
+- Sprawdzić czy demo jest realistyczne dla ELPLC workflow
+- Zidentyfikować missing features przed prezentacją
+
+**Czego słuchać:**
+- "Tak, to byłoby świetne" ← win!
+- "Ale musielibyście dodać X" ← uwzględnić w prezentacji
+- "Operatorzy by tego nie użyli bo Y" ← red flag, pivot needed
 
 ---
 
 ## 📝 TEMPLATE NOTATEK (wypełnij podczas rozmowy)
 
 ```
-Notatki z rozmowy z Kamilem Małochlebem lead produkcji
+Notatki z DRUGIEJ rozmowy z Kamilem Małochlebem (lead produkcji ELPLC)
+Data: ________________  |  Czas trwania: ________________
 
-=== KLUCZOWE ODPOWIEDZI ===
+=== CO JUŻ WIEMY (PIERWSZA ROZMOWA) ===
+✓ Problem: Maszyna wylatuje bez kontynuacji
+✓ System: TOMAI ERP (własny produkt ELPLC)
+✓ Planowanie: miesięczne wyprzedzenie, zmiany co tyg/2tyg
+✓ Stare maszyny: bez integracji, aplikacja obok
+✓ Koszty: wariatory $120/szt, cykl 6 sek
+✓ Operatorzy: chcą instrukcje + dużo info real-time
 
-1. PROBLEM Z AWARIAMI:
-   - Typowy scenariusz: Maszyna wylatuje z produkcji bez możliwości kontynuacji produkcji
-   - Czas reakcji obecnie:  Powinien być natychmiastowy / planiści zajmują się planowaniem produkcji
-   - Kto decyduje: Może planiści
-   - Narzędzia używane: TOMAI ERP (firma jest autorem)
+=== NOWE PYTANIA - ODPOWIEDZI ===
 
-2. PROCES PLANOWANIA:
-   - System: Klienci codziennie sprawdzają czy maja zaplanowane procesy produkcyjne
-   - Częstotliwość zmian: zależy od priorytetów ale zwykle tyg/2tyg / miesięczne wyprzedzenie
-   - Integracja z maszynami: często stare maszyny bez integracji ( elplc zlicza całkowity użytek, czy pracowała czy nie,) komputer z aplikacja obok maszyny dla operatorów
+1. DEEPDIVE W PROBLEM:
+   - Najczęstsze przyczyny awarii: _____________________
+   - Workflow operator → planista: _____________________
+   - Bottlenecki w komunikacji: ________________________
+   - Konsekwencje opóźnionej reakcji: __________________
 
-3. TOMAI:
-   - Funkcje: _________________________________________
-   - Czy reaguje automatycznie: ________________________
-   - API/integracja: ___________________________________
+2. CROSS-LINE SCHEDULING (100+ robotów, 4200m²):
+   - Czy linie są niezależne: __________________________
+   - Współdzielenie zasobów: ___________________________
+   - Priorytetyzacja projektów: ________________________
+   - Robotyzacja vs CNC (różnice): _____________________
 
-4. KOSZT PRZESTOJU:
-   - Koszt/godzina: Zależy od tego co maszyna produkuje, np wariatory do samochodów 1 = 120$ / 6sec
-   - Częstotliwość awarii: 
-   - % strat produkcji: ________________________________
+3. TOMAI - TECHNICAL DEEPDIVE:
+   - Czy TOMAI automatycznie reorganizuje: _____________
+   - API/webhooks dostępne: ____________________________
+   - Real-time event streaming: ________________________
+   - Plany rozbudowy TOMAI: ____________________________
+   - BMZ Poland case study insights: ___________________
 
-5. POTRZEBY OPERATORÓW:
-   - Największy problem: powinien wiedzieć jak powinien zareagować podczas awarii, instrukcje w systemie jak reagować, operatorzy chcą dużo informacji w czasie rzeczywistym
-   - Czego brakuje: 
-   - Preferowana automatyzacja: operatorzy zepsutych maszyn żeby wiedzieli co maja zrobić i gdzie przejść
+4. ROI CALCULATIONS:
+   - 30 min baseline realistic?: _______________________
+   - Liczba awarii/miesiąc: ____________________________
+   - Wariatory: ile można wyprodukować w 30 min: _______
+   - Inne high-value produkty: _________________________
+   - Kary umowne za opóźnienia: ________________________
+
+5. INSTRUKCJE DLA OPERATORÓW:
+   - Czy są SOPs dla awarii: ___________________________
+   - Co jest najbardziej przydatne: ____________________
+   - Dostęp do harmonogramu całej linii: _______________
+   - Gap w obecnych narzędziach: _______________________
+
+6. INTEGRACJA SYSTEMÓW:
+   - Systemy oprócz TOMAI (SCADA, IoT): ________________
+   - Standardy integracji (REST/SOAP/MQ): ______________
+   - Security/compliance requirements: _________________
+   - Effort estimate dla integracji: ___________________
+
+7. PILOT PROGRAM:
+   - Najlepsza linia do pilota: ________________________
+   - KPI success dla pilota: ___________________________
+   - Timeline typowych pilotów: ________________________
+   - Budget expectations: ______________________________
+
+8. DECISION MAKERS & NEXT STEPS:
+   - Kto powinien być zaangażowany: ____________________
+   - Rola zespołu CBR/R&D: _____________________________
+   - Budget na R&D projects: ___________________________
+   - Kryteria decyzyjne: _______________________________
+   - Otwartość na partnership: _________________________
+
+9. INDUSTRY 4.0 & KONKURENCJA:
+   - Obserwowane rozwiązania na rynku: _________________
+   - Trendy w smart factory: ___________________________
+   - White space dla FailSafe: _________________________
+   - Must-have vs nice-to-have features: _______________
+
+10. FEEDBACK NA DEMO:
+   - Reakcja na 3-sekundową reakcję: ___________________
+   - UI/UX feedback: ___________________________________
+   - Missing features: _________________________________
+   - Realistic dla ELPLC workflow: _____________________
 
 === DODATKOWE INSIGHTS ===
 ___________________________________________________________
 ___________________________________________________________
 ___________________________________________________________
 
+=== OBLICZENIA ROI (DO UŻYCIA W PREZENTACJI) ===
+Wariatory:
+• Baseline przestój: ______ min
+• Stracone sztuki: ______ × $120 = $______
+• Z FailSafe: ______ min
+• Stracone sztuki: ______ × $120 = $______
+• OSZCZĘDNOŚĆ NA AWARII: $______
+• Awarii/miesiąc: ______
+• OSZCZĘDNOŚĆ MIESIĘCZNA: $______
+• OSZCZĘDNOŚĆ ROCZNA: $______
+
 === ACTION ITEMS DLA ZESPOŁU ===
-☐ _______________________________________________________
-☐ _______________________________________________________
+☐ Zaktualizować ALGORITHMS.md o feedback techniczny
+☐ Dostosować UI demo do oczekiwań operatorów ELPLC
+☐ Dodać ROI slide do prezentacji z konkretnymi liczbami
+☐ Przygotować integration architecture diagram (FailSafe ↔ TOMAI)
+☐ Zidentyfikować pilot line w prezentacji
 ☐ _______________________________________________________
 
 === CYTATY DO UŻYCIA W PREZENTACJI ===
 "______________________________________________________"
-- Prezes ELPLC
+- Kamil Małochleb, Lead Produkcji ELPLC
 
 "______________________________________________________"
-- Prezes ELPLC
+- Kamil Małochleb, Lead Produkcji ELPLC
+
+"______________________________________________________"
+- Kamil Małochleb, Lead Produkcji ELPLC
 
 ```
 
 ---
 
-## 🎤 PRZYKŁADOWY DIALOG (roleplay)
+## 🎤 PRZYKŁADOWY DIALOG - DRUGA ROZMOWA (roleplay)
 
 ### Otwarcie:
-**Ty:** "Dzień dobry, Panie Prezesie! Jestem [IMIĘ] z zespołu FailSafe. Uczestniczymy w Hackathonie dla Małopolski i pracujemy nad systemem, który automatycznie reaguje na awarie produkcyjne. Czy mógłbym zadać kilka pytań o procesy w ELPLC?"
+**Ty:** "Dzień dobry, Kamilu! Dzięki za pierwszą rozmowę - informacje które nam przekazałeś były niesamowicie przydatne. Mamy działające demo i przygotowujemy prezentację. Czy mógłbym zadać kilka follow-up pytań, żeby jeszcze lepiej dopasować FailSafe do realiów ELPLC?"
 
-**Prezes:** "Dzień dobry! Oczywiście, słucham."
+**Kamil:** "Dzień dobry! Jasne, słucham."
 
-### Pytanie 1:
-**Ty:** "Jakie są typowe scenariusze awarii w halach produkcyjnych ELPLC? Co się dzieje, gdy np. CNC przestaje działać?"
+### Context Setting:
+**Ty:** "Na podstawie naszej pierwszej rozmowy zrozumieliśmy, że maszyna wylatuje z produkcji, planişci powinni reagować natychmiast, i używacie TOMAI jako ERP. To świetny fundament. Mam kilka pytań technicznych o TOMAI i szczegóły operacyjne."
 
-**Prezes:** [SŁUCHAJ UWAŻNIE - to najważniejsza odpowiedź]
+### Pytanie KLUCZOWE o TOMAI:
+**Ty:** "Wiemy że ELPLC stworzyło TOMAI - świetny system do monitoringu. Z naszego research rozumiemy, że zbiera dane w czasie rzeczywistym. Kluczowe pytanie: czy TOMAI również AUTOMATYCZNIE reorganizuje harmonogram gdy wykryje awarię, czy to wymaga ręcznej interwencji planisty?"
 
-### Follow-up:
-**Ty:** "Rozumiem. A ile czasu obecnie zajmuje reorganizacja harmonogramu po takiej awarii?"
+**Kamil:** [SŁUCHAJ: jeśli powie "wymaga ręcznej" = JACKPOT dla FailSafe!]
 
-**Prezes:** [NOTATKA: to nasza baseline - ile czasu oszczędzamy]
+### Follow-up o API:
+**Ty:** "Super! To oznacza że FailSafe mógłby być komplementarny do TOMAI. Czy TOMAI ma API lub webhooks, które mogą wysyłać real-time alerts o awariach do zewnętrznych systemów?"
 
-### Pytanie 2:
-**Ty:** "Jak obecnie planujecie harmonogram? Kto za to odpowiada i jakie narzędzia używacie?"
+**Kamil:** [NOTATKA: technical feasibility check]
 
-**Prezes:** [NOTATKA: czy mają system czy Excel]
+### Pytanie o ROI z konkretnymi liczbami:
+**Ty:** "Wspomniałeś w pierwszej rozmowie o wariatorach - $120 za sztukę, cykl produkcji 6 sekund. Jeśli typowa awaria to 30 minut przestoju - czy to znaczy że tracicie około 300 wariatorów? To $36,000 strat na jednej awarii. Czy te liczby są w dobrym zakresie?"
 
-### Pytanie o TOMAI:
-**Ty:** "Czytałem o systemie TOMAI. Czy on automatycznie reorganizuje harmonogram gdy wykryje awarię, czy wymaga ręcznej interwencji?"
+**Kamil:** [NOTATKA: to klucz do ROI slide w prezentacji]
 
-**Prezes:** [KLUCZOWE: jeśli TOMAI nie reorganizuje = nasza przewaga]
+### Pytanie o pilot:
+**Ty:** "Jeśli FailSafe pokazałby potencjał po hackathonie - czy jest konkretna linia produkcyjna w ELPLC, która byłaby najlepszym kandydatem do pilota? Może ta z wariatorami lub inna z wysokimi kosztami przestoju?"
 
-### Pytanie o ROI:
-**Ty:** "Czy możecie podać przybliżony koszt godziny przestoju? Chcemy pokazać konkretne oszczędności."
+**Kamil:** [NOTATKA: konkretny case study do prezentacji]
 
-**Prezes:** [LICZBY DO PREZENTACJI]
+### Pokazanie demo (jeśli pozwoli):
+**Ty:** "Kamilu, mam tutaj szybkie demo naszego UI. Operator widzi dashboard, zgłasza awarię CNC, system w 3 sekundy pokazuje nowy harmonogram z Gantt chart. Czy to jest coś co widziałbyś w hali ELPLC?"
+
+**Kamil:** [FEEDBACK na UI/UX]
 
 ### Zakończenie:
-**Ty:** "Dziękuję bardzo za czas! Te informacje bardzo pomogą nam dopasować SmartFlow do rzeczywistych potrzeb. Czy mogę jeszcze wrócić z pytaniami po hackathonie, jeśli będą jakieś szczegóły?"
+**Ty:** "Kamilu, to były fantastyczne insighty! Dzięki nim możemy pokazać nie tylko prototyp, ale real solution dopasowane do ELPLC. Wyślę Ci link do demo i prezentacji po hackathonie. Liczę na Twój feedback!"
 
-**Prezes:** "Oczywiście!"
+**Kamil:** "Super, czekam!"
 
-**Ty:** "Świetnie! Do zobaczenia na prezentacji finałowej. Dziękuję i miłego dnia!"
+**Ty:** "I ostatnie - jeśli FailSafe wygra lub pokaże potencjał, czy jesteś otwarty na rozmowę o pilotażu? Widzę ogromną synergię między TOMAI a FailSafe."
+
+**Kamil:** [NOTATKA: commitment level check]
+
+**Ty:** "Świetnie! Do zobaczenia na prezentacji finałowej. Dziękuję za Twój czas i wsparcie. Powodzenia w produkcji! 🚀"
+
+**[Po rozłączeniu: NATYCHMIAST przepisz notatki + oblicz ROI]**
 
 ---
 
@@ -283,18 +448,30 @@ ___________________________________________________________
 ### Natychmiast (w ciągu 1h):
 1. ✅ Przepisz notatki na czysto (póki pamiętasz szczegóły)
 2. ✅ Wyciągnij 3 najważniejsze insighty
-3. ✅ Zaktualizuj README.md o konkretne liczby z rozmowy
-4. ✅ Dostosuj demo scenariusz do realnego problemu ELPLC
+3. ✅ **OBLICZ ROI** z konkretnymi liczbami (wariatory, awarie/miesiąc)
+4. ✅ Zaktualizuj README.md o dane z rozmowy
+5. ✅ Dostosuj demo scenariusz - pokaż integrację FailSafe ↔ TOMAI
+6. ✅ Dodaj "Instrukcje dla operatora" do UI mockup (feedback z rozmowy)
 
-### Przed prezentacją:
-1. ✅ Użyj cytatów prezesa w slajdach ("Jak powiedział Prezes ELPLC...")
-2. ✅ Pokaż że "rozumiemy problem" bo rozmawialiśmy z klientem
-3. ✅ Użyj konkretnych liczb ROI z rozmowy
+### Przed prezentacją (priorytet!):
+1. ✅ Stwórz **ROI slide** z calculations:
+   - "Jedna awaria CNC: $36,000 strat"
+   - "Z FailSafe: $2,400 strat"
+   - "Oszczędność: $33,600 = 93% redukcja kosztów"
+2. ✅ Użyj cytatów Kamila w slajdach: "Jak powiedział Kamil Małochleb, Lead Produkcji ELPLC..."
+3. ✅ Dodaj slide: "FailSafe + TOMAI = Kompletny Ekosystem Industry 4.0"
+4. ✅ Pokaż konkretną pilot line (którą sugerował Kamil)
+5. ✅ Integration diagram: TOMAI API → FailSafe → Operator Dashboard
+
+### Po prezentacji:
+1. ✅ Wyślij Kamilowi link do prezentacji + demo video
+2. ✅ Email z podziękowaniem + konkretne next steps
+3. ✅ Zaproponuj pilot program meeting (z timeline i scope)
 
 ### Po hackathonie:
-1. ✅ Wyślij email z podziękowaniem
-2. ✅ Podziel się wynikami hackathonu
-3. ✅ Zaproponuj follow-up meeting (jeśli wygramy)
+1. ✅ Podziel się wynikami z ELPLC
+2. ✅ Jeśli wygramy: zaproponuj 2-tygodniowy pilot na wybranej linii
+3. ✅ Przygotuj proposal: integration z TOMAI + ROI projections
 
 ---
 
@@ -319,19 +496,47 @@ Prezes może też zapytać Cię o projekt. Przygotuj się na:
 
 ---
 
-## 📞 CHECKLIST PRZED TELEFONEM
+## 🎯 STRATEGICZNE CELE DRUGIEJ ROZMOWY
+
+### Must-Have Outcomes:
+```
+1. ✅ Potwierdzenie: TOMAI NIE reorganizuje automatycznie
+   → To jest nasz unique value prop!
+
+2. ✅ ROI numbers: Ile awarii/miesiąc × koszt/awaria
+   → Konkretne $$ do prezentacji
+
+3. ✅ TOMAI API: Czy istnieje? Jakie możliwości?
+   → Technical feasibility check
+
+4. ✅ Pilot line: Konkretna linia do case study
+   → Pokazać że myślimy o wdrożeniu
+
+5. ✅ Champion identification: Kto będzie wspierał projekt?
+   → Post-hackathon relationship
+```
+
+### Nice-to-Have Outcomes:
+- Feedback na UI/UX demo
+- Insights o konkurencji i trendach
+- Dodatkowe use cases (cross-line scheduling)
+- Security/compliance requirements
+
+---
+
+## 📞 CHECKLIST PRZED DRUGIM TELEFONEMLEFONEM
 
 ```
-☐ Przeczytałem ELPLC_RESEARCH.md
-☐ Mam notatnik i długopis
-☐ Telefon naładowany
-☐ Cisza w pomieszczeniu
-☐ Wiem kim jest osoba (imię, stanowisko)
-☐ Mam listę 5 priorytetowych pytań
-☐ Jestem gotowy na 10-15 min rozmowy
-☐ Nastawiłem nagrywanie (za zgodą) lub przygotowałem notatki
-☐ Zespół jest obok (ewentualne dodatkowe pytania)
-☐ Mam pozytywną energię! 💪
+☐ Przeczytałem wszystkie pliki: ELPLC_RESEARCH.md, README.md, ALGORITHMS.md, PRESENTATION_GUIDE.md
+☐ Mam notatki z PIERWSZEJ rozmowy pod ręką
+☐ Przygotowałem ROI calculation template (wariatory example)
+☐ Mam listę 11 pytań do deepdive
+☐ Laptop gotowy do pokazania demo (jeśli będzie okazja)
+☐ Notatnik + długopis + nagrywanie (za zgodą)
+☐ Zespół obok (support przy technicznych pytaniach)
+☐ Wiem czego oczekuję: TOMAI API info, ROI numbers, pilot line
+☐ Przygotowałem opening: "Dziękuję za pierwszą rozmowę, mamy kilka follow-up pytań"
+☐ Pozytywna energia + focus na partnership (nie tylko hackathon)! 💪
 ```
 
 ---

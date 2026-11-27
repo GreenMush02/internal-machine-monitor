@@ -44,7 +44,7 @@ const failureHistory = [
 ];
 
 // Process definitions with risk factors
-const processes = [
+const analyticsProcesses = [
     { id: 'frezowanie_felg', name: 'Frezowanie felg', category: 'CNC', avgDuration: 65, complexity: 'high', riskFactor: 0.75 },
     { id: 'frezowanie_korpusow', name: 'Frezowanie korpusów', category: 'CNC', avgDuration: 85, complexity: 'high', riskFactor: 0.68 },
     { id: 'toczenie_walkow', name: 'Toczenie wałków', category: 'CNC', avgDuration: 45, complexity: 'medium', riskFactor: 0.82 },

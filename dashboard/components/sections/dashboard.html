@@ -83,4 +83,44 @@
         </div>
     </section>
 
+    <section class="mb-8" aria-label="Wykresy demonstracyjne">
+        <p class="text-sm text-slate-400 mb-4">Dane demonstracyjne</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                <h3 class="text-lg font-bold mb-6">Awarie według daty</h3>
+                <canvas id="failuresChart" role="img" aria-label="Liczba awarii według daty"></canvas>
+                <details class="mt-4 text-sm text-slate-300">
+                    <summary class="cursor-pointer">Liczba awarii według dnia</summary>
+                    <table class="w-full mt-2">
+                        <caption class="sr-only">Liczba awarii w poszczególnych dniach</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-left pr-4">Data</th>
+                                <th scope="col" class="text-right">Liczba awarii</th>
+                            </tr>
+                        </thead>
+                        <tbody id="failuresChartValues"></tbody>
+                    </table>
+                </details>
+            </div>
+            <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                <h3 class="text-lg font-bold mb-6">Wykorzystanie maszyn</h3>
+                <canvas id="utilizationChart" role="img" aria-label="Wykorzystanie maszyn w procentach"></canvas>
+                <details class="mt-4 text-sm text-slate-300">
+                    <summary class="cursor-pointer">Wykorzystanie poszczególnych maszyn</summary>
+                    <table class="w-full mt-2">
+                        <caption class="sr-only">Procent wykorzystania poszczególnych maszyn</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-left pr-4">Maszyna</th>
+                                <th scope="col" class="text-right">Wykorzystanie</th>
+                            </tr>
+                        </thead>
+                        <tbody id="utilizationChartValues"></tbody>
+                    </table>
+                </details>
+            </div>
+        </div>
+    </section>
+
 </div>

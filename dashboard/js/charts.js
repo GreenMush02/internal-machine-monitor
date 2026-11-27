@@ -7,8 +7,30 @@ Chart.defaults.borderColor = '#334155';
 let failuresChart = null;
 let utilizationChart = null;
 
-// Initialize charts when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+const chartValuesTable = {
+    id: 'chart-values-table',
+    afterUpdate(chart) {
+        const tableBody = document.getElementById(chart.canvas.id + 'Values');
+        const values = chart.data.datasets[0].data;
+        const suffix = chart.canvas.id === 'utilizationChart' ? '%' : '';
+        const rows = chart.data.labels.map((label, index) => {
+            const row = document.createElement('tr');
+            const heading = document.createElement('th');
+            const cell = document.createElement('td');
+            heading.scope = 'row';
+            heading.className = 'text-left font-normal py-1 pr-4';
+            heading.textContent = label;
+            cell.className = 'text-right tabular-nums py-1';
+            cell.textContent = Number.isFinite(values[index]) ? values[index] + suffix : 'brak danych';
+            row.append(heading, cell);
+            return row;
+        });
+        tableBody.replaceChildren(...rows);
+    }
+};
+
+// Initialize charts after the dashboard components are in the document
+document.addEventListener('componentsLoaded', () => {
     initializeFailuresChart();
     initializeUtilizationChart();
 });
@@ -17,10 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
  * Initialize Failures Chart (Bar Chart)
  */
 function initializeFailuresChart() {
+    if (failuresChart) return;
     const ctx = document.getElementById('failuresChart').getContext('2d');
 
     failuresChart = new Chart(ctx, {
         type: 'bar',
+        plugins: [chartValuesTable],
         data: {
             labels: failuresData.labels,
             datasets: [{
@@ -35,6 +59,7 @@ function initializeFailuresChart() {
         },
         options: {
             responsive: true,
+            animation: false,
             maintainAspectRatio: true,
             plugins: {
                 legend: {
@@ -85,10 +110,12 @@ function initializeFailuresChart() {
  * Initialize Utilization Chart (Horizontal Bar Chart)
  */
 function initializeUtilizationChart() {
+    if (utilizationChart) return;
     const ctx = document.getElementById('utilizationChart').getContext('2d');
 
     utilizationChart = new Chart(ctx, {
         type: 'bar',
+        plugins: [chartValuesTable],
         data: {
             labels: utilizationData.labels,
             datasets: [{
@@ -102,7 +129,9 @@ function initializeUtilizationChart() {
         options: {
             indexAxis: 'y',
             responsive: true,
+            animation: false,
             maintainAspectRatio: true,
+            aspectRatio: 1.5,
             plugins: {
                 legend: {
                     display: false
@@ -139,6 +168,7 @@ function initializeUtilizationChart() {
                 },
                 y: {
                     ticks: {
+                        autoSkip: false,
                         color: '#94a3b8'
                     },
                     grid: {

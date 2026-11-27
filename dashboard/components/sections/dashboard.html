@@ -83,4 +83,18 @@
         </div>
     </section>
 
+    <section class="mb-8" aria-label="Wykresy demonstracyjne">
+        <p class="text-sm text-slate-400 mb-4">Dane demonstracyjne</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                <h3 class="text-lg font-bold mb-6">Awarie według daty</h3>
+                <canvas id="failuresChart" role="img" aria-label="Liczba awarii według daty"></canvas>
+            </div>
+            <div class="bg-dark-card rounded-xl p-6 shadow-lg">
+                <h3 class="text-lg font-bold mb-6">Wykorzystanie maszyn</h3>
+                <canvas id="utilizationChart" role="img" aria-label="Wykorzystanie maszyn w procentach"></canvas>
+            </div>
+        </div>
+    </section>
+
 </div>

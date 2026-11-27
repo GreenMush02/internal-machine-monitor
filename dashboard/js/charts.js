@@ -7,8 +7,8 @@ Chart.defaults.borderColor = '#334155';
 let failuresChart = null;
 let utilizationChart = null;
 
-// Initialize charts when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize charts after the dashboard components are in the document
+document.addEventListener('componentsLoaded', () => {
     initializeFailuresChart();
     initializeUtilizationChart();
 });
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * Initialize Failures Chart (Bar Chart)
  */
 function initializeFailuresChart() {
+    if (failuresChart) return;
     const ctx = document.getElementById('failuresChart').getContext('2d');
 
     failuresChart = new Chart(ctx, {
@@ -35,6 +36,7 @@ function initializeFailuresChart() {
         },
         options: {
             responsive: true,
+            animation: false,
             maintainAspectRatio: true,
             plugins: {
                 legend: {
@@ -85,6 +87,7 @@ function initializeFailuresChart() {
  * Initialize Utilization Chart (Horizontal Bar Chart)
  */
 function initializeUtilizationChart() {
+    if (utilizationChart) return;
     const ctx = document.getElementById('utilizationChart').getContext('2d');
 
     utilizationChart = new Chart(ctx, {
@@ -102,7 +105,9 @@ function initializeUtilizationChart() {
         options: {
             indexAxis: 'y',
             responsive: true,
+            animation: false,
             maintainAspectRatio: true,
+            aspectRatio: 1.5,
             plugins: {
                 legend: {
                     display: false
@@ -139,6 +144,7 @@ function initializeUtilizationChart() {
                 },
                 y: {
                     ticks: {
+                        autoSkip: false,
                         color: '#94a3b8'
                     },
                     grid: {

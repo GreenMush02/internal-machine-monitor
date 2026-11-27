@@ -33,10 +33,17 @@ class AuthManager {
     }
 
     loadUser() {
-        // Spróbuj załadować z localStorage
-        const savedUser = localStorage.getItem('smartflow_user');
-        if (savedUser) {
-            return JSON.parse(savedUser);
+        try {
+            const savedUser = localStorage.getItem('smartflow_user');
+            if (savedUser) {
+                const user = JSON.parse(savedUser);
+                if (user && typeof user.name === 'string' &&
+                    Object.values(USER_ROLES).includes(user.role)) {
+                    return user;
+                }
+            }
+        } catch (error) {
+            if (!(error instanceof SyntaxError) && !(error instanceof DOMException)) throw error;
         }
 
         // Domyślnie: operator
@@ -50,8 +57,14 @@ class AuthManager {
     }
 
     saveUser(user) {
+        try {
+            localStorage.setItem('smartflow_user', JSON.stringify(user));
+        } catch (error) {
+            if (!(error instanceof DOMException)) throw error;
+            return false;
+        }
         this.currentUser = user;
-        localStorage.setItem('smartflow_user', JSON.stringify(user));
+        return true;
     }
 
     login(role, name = null) {
@@ -76,12 +89,18 @@ class AuthManager {
             }
         };
 
-        this.saveUser(users[role]);
-        window.location.reload();
+        if (Object.hasOwn(users, role) && this.saveUser(users[role])) {
+            window.location.reload();
+        }
     }
 
     logout() {
-        localStorage.removeItem('smartflow_user');
+        try {
+            localStorage.removeItem('smartflow_user');
+        } catch (error) {
+            if (!(error instanceof DOMException)) throw error;
+            return;
+        }
         this.currentUser = this.loadUser();
         window.location.reload();
     }
